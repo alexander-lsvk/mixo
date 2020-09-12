@@ -42,9 +42,10 @@
 		BE00734A6D94F0693E97DF26 /* Pods_MixoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 677C59B13822EB8DBD6AA294 /* Pods_MixoTests.framework */; };
 		C17996FD250CFFFA0048FEEE /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17996FC250CFFFA0048FEEE /* MainTabViewController.swift */; };
 		C17996FF250D136D0048FEEE /* MainTabPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17996FE250D136D0048FEEE /* MainTabPresenter.swift */; };
+		CE23EF89250CF65C00AABC12 /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23EF87250CF65C00AABC12 /* TrackTableViewCell.swift */; };
+		CE23EF8A250CF65C00AABC12 /* TrackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE23EF88250CF65C00AABC12 /* TrackTableViewCell.xib */; };
+		CE23EF8D250CFA2C00AABC12 /* TrackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23EF8C250CFA2C00AABC12 /* TrackViewModel.swift */; };
 		E81E3E8D23CA2DE700D7E134 /* Mix.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81E3E8C23CA2DE700D7E134 /* Mix.swift */; };
-		E81E3E9823CCF91B00D7E134 /* MixDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E81E3E9023CCF91B00D7E134 /* MixDetailTableViewCell.xib */; };
-		E81E3E9923CCF91B00D7E134 /* MixDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81E3E9123CCF91B00D7E134 /* MixDetailTableViewCell.swift */; };
 		E81E3E9A23CCF91B00D7E134 /* MixDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81E3E9223CCF91B00D7E134 /* MixDetailsPresenter.swift */; };
 		E81E3E9B23CCF91B00D7E134 /* MixDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81E3E9323CCF91B00D7E134 /* MixDetailsViewController.swift */; };
 		E81E3E9C23CCF91B00D7E134 /* MixDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81E3E9423CCF91B00D7E134 /* MixDetailsView.swift */; };
@@ -86,8 +87,6 @@
 		E8785B88229DB5AD00CCDD71 /* RecommendationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8785B87229DB5AD00CCDD71 /* RecommendationViewModel.swift */; };
 		E8785B8A229DB78600CCDD71 /* RecommendationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8785B89229DB78600CCDD71 /* RecommendationsResponse.swift */; };
 		E8785B8D229DB8B700CCDD71 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8785B8C229DB8B700CCDD71 /* Track.swift */; };
-		E8785B94229DBC6000CCDD71 /* RecommendationSongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8785B92229DBC6000CCDD71 /* RecommendationSongTableViewCell.swift */; };
-		E8785B95229DBC6000CCDD71 /* RecommendationSongTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8785B93229DBC6000CCDD71 /* RecommendationSongTableViewCell.xib */; };
 		E8785B97229DC43600CCDD71 /* AudioFeaturesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8785B96229DC43600CCDD71 /* AudioFeaturesResponse.swift */; };
 		E8785B99229DD61700CCDD71 /* Chord.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8785B98229DD61700CCDD71 /* Chord.swift */; };
 		E8785B9B229DD7EF00CCDD71 /* Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8785B9A229DD7EF00CCDD71 /* Mode.swift */; };
@@ -113,8 +112,6 @@
 		E8F6FE38229D6DB800FB1A5F /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8F6FE37229D6DB800FB1A5F /* SearchView.xib */; };
 		E8F6FE3B229D6DF100FB1A5F /* XibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F6FE3A229D6DF100FB1A5F /* XibLoadable.swift */; };
 		E8F6FE3D229D6E1C00FB1A5F /* Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F6FE3C229D6E1C00FB1A5F /* Autolayout.swift */; };
-		E8F6FE40229D736100FB1A5F /* SearchSongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F6FE3E229D736100FB1A5F /* SearchSongTableViewCell.swift */; };
-		E8F6FE41229D736100FB1A5F /* SearchSongTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8F6FE3F229D736100FB1A5F /* SearchSongTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,10 +172,11 @@
 		C17996FC250CFFFA0048FEEE /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		C17996FE250D136D0048FEEE /* MainTabPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabPresenter.swift; sourceTree = "<group>"; };
 		C1EFD063D2987E80DBC61B91 /* Pods_Mixo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mixo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE23EF87250CF65C00AABC12 /* TrackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
+		CE23EF88250CF65C00AABC12 /* TrackTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackTableViewCell.xib; sourceTree = "<group>"; };
+		CE23EF8C250CFA2C00AABC12 /* TrackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackViewModel.swift; sourceTree = "<group>"; };
 		D075D223BE98C114E2337A4B /* Pods-MixoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MixoUITests.release.xcconfig"; path = "Target Support Files/Pods-MixoUITests/Pods-MixoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E81E3E8C23CA2DE700D7E134 /* Mix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mix.swift; sourceTree = "<group>"; };
-		E81E3E9023CCF91B00D7E134 /* MixDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MixDetailTableViewCell.xib; sourceTree = "<group>"; };
-		E81E3E9123CCF91B00D7E134 /* MixDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixDetailTableViewCell.swift; sourceTree = "<group>"; };
 		E81E3E9223CCF91B00D7E134 /* MixDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixDetailsPresenter.swift; sourceTree = "<group>"; };
 		E81E3E9323CCF91B00D7E134 /* MixDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixDetailsViewController.swift; sourceTree = "<group>"; };
 		E81E3E9423CCF91B00D7E134 /* MixDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixDetailsView.swift; sourceTree = "<group>"; };
@@ -227,8 +225,6 @@
 		E8785B87229DB5AD00CCDD71 /* RecommendationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationViewModel.swift; sourceTree = "<group>"; };
 		E8785B89229DB78600CCDD71 /* RecommendationsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsResponse.swift; sourceTree = "<group>"; };
 		E8785B8C229DB8B700CCDD71 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
-		E8785B92229DBC6000CCDD71 /* RecommendationSongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationSongTableViewCell.swift; sourceTree = "<group>"; };
-		E8785B93229DBC6000CCDD71 /* RecommendationSongTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendationSongTableViewCell.xib; sourceTree = "<group>"; };
 		E8785B96229DC43600CCDD71 /* AudioFeaturesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFeaturesResponse.swift; sourceTree = "<group>"; };
 		E8785B98229DD61700CCDD71 /* Chord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chord.swift; sourceTree = "<group>"; };
 		E8785B9A229DD7EF00CCDD71 /* Mode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mode.swift; sourceTree = "<group>"; };
@@ -254,8 +250,6 @@
 		E8F6FE37229D6DB800FB1A5F /* SearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchView.xib; sourceTree = "<group>"; };
 		E8F6FE3A229D6DF100FB1A5F /* XibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XibLoadable.swift; sourceTree = "<group>"; };
 		E8F6FE3C229D6E1C00FB1A5F /* Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Autolayout.swift; sourceTree = "<group>"; };
-		E8F6FE3E229D736100FB1A5F /* SearchSongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchSongTableViewCell.swift; sourceTree = "<group>"; };
-		E8F6FE3F229D736100FB1A5F /* SearchSongTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchSongTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,8 +284,8 @@
 		1119DBC0244897C90094C9BC /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				1119DBD12448993E0094C9BC /* MessagesController */,
-				1119DBC1244897D60094C9BC /* StatusController */,
+				CE23EF86250CF64600AABC12 /* Views */,
+				CE23EF85250CF63000AABC12 /* Controllers */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -360,6 +354,7 @@
 			isa = PBXGroup;
 			children = (
 				117D557E2442F7DE008D858F /* Responses */,
+				CE23EF8B250CFA0A00AABC12 /* ViewModels */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -401,6 +396,32 @@
 			path = MainTab;
 			sourceTree = "<group>";
 		};
+		CE23EF85250CF63000AABC12 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1119DBD12448993E0094C9BC /* MessagesController */,
+				1119DBC1244897D60094C9BC /* StatusController */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CE23EF86250CF64600AABC12 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CE23EF87250CF65C00AABC12 /* TrackTableViewCell.swift */,
+				CE23EF88250CF65C00AABC12 /* TrackTableViewCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CE23EF8B250CFA0A00AABC12 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				CE23EF8C250CFA2C00AABC12 /* TrackViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		DBEE048E929A5FFADAA684A4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -428,8 +449,6 @@
 			children = (
 				E81E3E9423CCF91B00D7E134 /* MixDetailsView.swift */,
 				E81E3E9623CCF91B00D7E134 /* MixDetailsView.xib */,
-				E81E3E9123CCF91B00D7E134 /* MixDetailTableViewCell.swift */,
-				E81E3E9023CCF91B00D7E134 /* MixDetailTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -630,8 +649,6 @@
 				E8A84AA022A2D2E300212127 /* SearchBar */,
 				E8F6FE35229D6DAB00FB1A5F /* SearchView.swift */,
 				E8F6FE37229D6DB800FB1A5F /* SearchView.xib */,
-				E8F6FE3E229D736100FB1A5F /* SearchSongTableViewCell.swift */,
-				E8F6FE3F229D736100FB1A5F /* SearchSongTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -652,8 +669,6 @@
 			children = (
 				E8785B84229DB48300CCDD71 /* RecommendationsView.swift */,
 				E8785B81229DB46D00CCDD71 /* RecommendationsView.xib */,
-				E8785B92229DBC6000CCDD71 /* RecommendationSongTableViewCell.swift */,
-				E8785B93229DBC6000CCDD71 /* RecommendationSongTableViewCell.xib */,
 				117D55832444FEC3008D858F /* RecommendationsSortView.swift */,
 				117D55852444FED1008D858F /* RecommendationsSortView.xib */,
 			);
@@ -864,19 +879,17 @@
 				E89F356F23C67D8F004D6FAE /* SF-Pro-Rounded-Light.otf in Resources */,
 				E84A2BB423C9F67C0005B2CE /* MixTableViewCell.xib in Resources */,
 				E89F356B23C67D8F004D6FAE /* SF-Pro-Rounded-Black.otf in Resources */,
-				E8F6FE41229D736100FB1A5F /* SearchSongTableViewCell.xib in Resources */,
 				E89F356D23C67D8F004D6FAE /* SF-Pro-Rounded-Heavy.otf in Resources */,
 				11E6883624470810002C615A /* EditMixInfoView.xib in Resources */,
 				E89F357023C67D8F004D6FAE /* SF-Pro-Rounded-Regular.otf in Resources */,
 				112E8F90245DD25C004285E9 /* SpotifyLoginView.xib in Resources */,
-				E81E3E9823CCF91B00D7E134 /* MixDetailTableViewCell.xib in Resources */,
 				E89F356C23C67D8F004D6FAE /* SF-Pro-Rounded-Medium.otf in Resources */,
 				E89F356E23C67D8F004D6FAE /* SF-Pro-Rounded-Bold.otf in Resources */,
 				1119DBD0244898A90094C9BC /* EmptyStatusView.xib in Resources */,
 				E86F89B32291F34B00785FFF /* LaunchScreen.storyboard in Resources */,
+				CE23EF8A250CF65C00AABC12 /* TrackTableViewCell.xib in Resources */,
 				1119DBCF244898A60094C9BC /* LoadingStatusView.xib in Resources */,
 				E86F89B02291F34B00785FFF /* Assets.xcassets in Resources */,
-				E8785B95229DBC6000CCDD71 /* RecommendationSongTableViewCell.xib in Resources */,
 				E8785B82229DB46D00CCDD71 /* RecommendationsView.xib in Resources */,
 				E85D526323218D01005D0C91 /* SubscriptionView.xib in Resources */,
 				E89F357123C67D8F004D6FAE /* SF-Pro-Rounded-Semibold.otf in Resources */,
@@ -999,20 +1012,18 @@
 				E84A2BB523C9F67C0005B2CE /* MixTableViewCell.swift in Sources */,
 				E8F6FE34229D6A9300FB1A5F /* SearchResultViewModel.swift in Sources */,
 				E8F6FE3B229D6DF100FB1A5F /* XibLoadable.swift in Sources */,
+				CE23EF89250CF65C00AABC12 /* TrackTableViewCell.swift in Sources */,
 				E8A84AA722A2D42C00212127 /* UIView+Border.swift in Sources */,
 				E85D525C23218CD4005D0C91 /* SubscriptionPresenter.swift in Sources */,
 				E8785B9B229DD7EF00CCDD71 /* Mode.swift in Sources */,
 				117D55792440D904008D858F /* MixDetailsViewModel.swift in Sources */,
 				E8785B88229DB5AD00CCDD71 /* RecommendationViewModel.swift in Sources */,
-				E8785B94229DBC6000CCDD71 /* RecommendationSongTableViewCell.swift in Sources */,
-				E8F6FE40229D736100FB1A5F /* SearchSongTableViewCell.swift in Sources */,
 				C17996FD250CFFFA0048FEEE /* MainTabViewController.swift in Sources */,
 				1119DBC7244898100094C9BC /* StatusViewContainer.swift in Sources */,
 				E8785B85229DB48300CCDD71 /* RecommendationsView.swift in Sources */,
 				116D54D0243A55B800EDC055 /* MixesDisplayMode.swift in Sources */,
 				E81E3E9D23CCF91B00D7E134 /* MixDetailViewModel.swift in Sources */,
 				E81E3E8D23CA2DE700D7E134 /* Mix.swift in Sources */,
-				E81E3E9923CCF91B00D7E134 /* MixDetailTableViewCell.swift in Sources */,
 				E81E3E9B23CCF91B00D7E134 /* MixDetailsViewController.swift in Sources */,
 				E8A84AA222A2D30900212127 /* SearchBar.swift in Sources */,
 				E86F89AB2291F34A00785FFF /* SearchViewController.swift in Sources */,
@@ -1067,6 +1078,7 @@
 				1119DBD5244899460094C9BC /* Message.swift in Sources */,
 				E86F89F52295E69000785FFF /* AuthenticationService.swift in Sources */,
 				E8F6FE36229D6DAB00FB1A5F /* SearchView.swift in Sources */,
+				CE23EF8D250CFA2C00AABC12 /* TrackViewModel.swift in Sources */,
 				112E8F8E245DD250004285E9 /* SpotifyLoginView.swift in Sources */,
 				E84A2BB823C9F67C0005B2CE /* MixesView.swift in Sources */,
 				E8785B8A229DB78600CCDD71 /* RecommendationsResponse.swift in Sources */,
@@ -1239,8 +1251,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = RQ4NX29V75;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1260,7 +1271,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.Mixo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "mixo-development";
 				SWIFT_OBJC_BRIDGING_HEADER = "Mixo/Mixo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -1274,8 +1285,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = RQ4NX29V75;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1295,7 +1306,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.Mixo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "mixo-development";
 				SWIFT_OBJC_BRIDGING_HEADER = "Mixo/Mixo-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

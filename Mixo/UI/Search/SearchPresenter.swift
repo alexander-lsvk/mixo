@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftRater
 import FirebaseAuth
 import FirebaseFirestore
 import CodableFirebase
@@ -16,6 +17,12 @@ struct SearchViewHandler {
     let setViewModels: (_ viewModels: [SearchResultViewModel]?) -> Void
     let presentRecommendationsViewController: (_ presenter: RecommendationsPresenter) -> Void
     let presentMixesViewController: (_ presenter: MixesPresenter) -> Void
+<<<<<<< HEAD
+=======
+    let presentSpotifyLoginViewController: (_ presenter: SpotifyLoginPresenter) -> Void
+    let showMixesViewController: (_ presenter: MixesPresenter) -> Void
+    let showAddedToMix: () -> Void
+>>>>>>> 6de5cc22ed5ab3e4d6c5dcfa1f4d791ab3e6068b
     let becomeFirstResponder: () -> Void
 }
 
@@ -24,6 +31,7 @@ final class SearchPresenter: Presenter {
     var searchViewHandler: SearchViewHandler?
 
     private var tracks: [Track]?
+    private var audioFeatures = [AudioFeatures]()
 
     private let networkService: NetworkService
     private let authenticationService: AuthenticationService
@@ -126,18 +134,21 @@ extension SearchPresenter {
                 switch result {
                 case .success(let response):
                     var searchResultViewModels = [SearchResultViewModel]()
-
+                    self.audioFeatures = response.audioFeatures
+                    
                     for track in tracks {
                         guard let trackFeatures = response.audioFeatures.first(where: { $0.id == track.id }) else {
                             return
                         }
 
-                        searchResultViewModels.append(SearchResultViewModel(with: track,
-                                                                            key: Key(rawChord: trackFeatures.key, rawMode: trackFeatures.mode),
-                                                                            tempo: trackFeatures.tempo,
-                                                                            didSelectHandler: { [weak self] searchResultViewModel in
-                                                                                self?.prepareRecommendationsPresenter(for: track)
-                                                                            }))
+                        var searchResultViewModel = SearchResultViewModel(with: track,
+                                                                          key: Key(rawChord: trackFeatures.key, rawMode: trackFeatures.mode),
+                                                                          tempo: trackFeatures.tempo,
+                                                                          didSelectHandler: { [weak self] searchResultViewModel in
+                                                                            self?.prepareRecommendationsPresenter(for: track)
+                        })
+                        searchResultViewModel.addToMixHandler = { [weak self] in self?.addTrackToMix(searchResultViewModel) }
+                        searchResultViewModels.append(searchResultViewModel)
                     }
 
                     self.searchViewHandler?.setViewModels(searchResultViewModels)
@@ -171,5 +182,30 @@ extension SearchPresenter {
         }
         let recommendationsPresenter = RecommendationsPresenter(currentTrack: track, showBackToSearchButton: true)
         searchViewHandler?.presentRecommendationsViewController(recommendationsPresenter)
+    }
+    
+    private func addTrackToMix(_ searchViewModel: SearchResultViewModel) {
+        guard let track = tracks?.first(where: { $0.id == searchViewModel.trackId }),
+              let audioFeatures = audioFeatures.first(where: { $0.id == searchViewModel.trackId }) else {
+                return
+        }
+        let mixTrack = MixTrack(with: track, and: audioFeatures)
+        searchViewHandler?.showMixesViewController(MixesPresenter(displayMode: .add(track: mixTrack,
+                                                                                             completionHandler: { [weak self] in
+                                                                                                self?.updateLastAction()
+                                                                                                self?.searchViewHandler?.showAddedToMix()
+                                                                                                SwiftRater.check()
+                                                                                             })))
+    }
+    
+    private func updateLastAction() {
+        let firestore = Firestore.firestore()
+        firestore.collection("users").whereField("id", isEqualTo: Auth.auth().currentUser?.uid as Any).getDocuments() { querySnapshot, error in
+            guard let userDocumentId = querySnapshot?.documents.first?.documentID else {
+                return
+            }
+            let userReference = firestore.collection("users").document(userDocumentId)
+            userReference.updateData(["lastAction": Timestamp(date: Date())])
+        }
     }
 }

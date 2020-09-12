@@ -86,8 +86,10 @@ final class RecommendationsView: UIView, XibLoadable {
         }
 
         playButton.isSelected = viewModel.isPlaying
+        
+        let localPlayHandler = { viewModel.didSelectHandler(viewModel) }
 
-        playHandler = viewModel.playHandler
+        playHandler = localPlayHandler
         addToMixHandler = viewModel.addToMixHandler
         backToSearchHandler = viewModel.backToSearchHandler
     }
@@ -128,8 +130,8 @@ extension RecommendationsView: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: RecommendationSongTableViewCell.reuseId,
-                                                 for: indexPath) as? RecommendationSongTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: TrackTableViewCell.reuseId,
+                                                 for: indexPath) as? TrackTableViewCell
         let viewModel = viewModels?[indexPath.row]
         cell?.update(with: viewModel)
         return cell ?? UITableViewCell()
@@ -180,7 +182,7 @@ extension RecommendationsView: UITableViewDataSource, UITableViewDelegate {
 // MARK: - SkeletonTableViewDataSource
 extension RecommendationsView: SkeletonTableViewDataSource {
     func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
-       return RecommendationSongTableViewCell.reuseId
+       return TrackTableViewCell.reuseId
     }
 }
 
@@ -192,7 +194,7 @@ extension RecommendationsView {
 
         tableView.contentInset = UIEdgeInsets(top: 0.0, left: 0, bottom: 0, right: 0)
         
-        register(reusableCell: RecommendationSongTableViewCell.self)
+        register(reusableCell: TrackTableViewCell.self)
     }
 
     private func register<T: Reusable>(reusableCell: T.Type) {

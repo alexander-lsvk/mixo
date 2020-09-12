@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct RecommendationViewModel {
+struct RecommendationViewModel: TrackViewModel {
     let trackId: String
     let artist: String
     let name: String
@@ -16,13 +16,13 @@ struct RecommendationViewModel {
     let key: Key?
     let tempo: Float
     let isMostHarmonic: Bool
+    let place: TrackPlace = .recommendations
 
-    var playHandler: (() -> Void)?
     var addToMixHandler: (() -> Void)?
     var backToSearchHandler: (() -> Void)?
     var showRecommendationsHandler: (() -> Void)?
 
-    var didSelectHandler: ((RecommendationViewModel) -> Void)
+    var didSelectHandler: ((TrackViewModel) -> Void)
 
     var isPlaying = false
     
@@ -30,7 +30,7 @@ struct RecommendationViewModel {
          key: Key? = nil,
          tempo: Float,
          isMostHarmonic: Bool,
-         didSelectHandler: @escaping ((RecommendationViewModel) -> Void)) {
+         didSelectHandler: @escaping ((TrackViewModel) -> Void)) {
         self.trackId = track.id
         self.artist = track.artists.map { $0.name }.joined(separator: ", ")
         self.name = track.name

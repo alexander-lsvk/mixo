@@ -226,7 +226,6 @@ extension RecommendationsPresenter {
                                                               })
 
         recommendationViewModel.isPlaying = isPlaying
-        recommendationViewModel.playHandler = { [weak self] in self?.playAudioPreview(for: recommendationViewModel.trackId) }
         recommendationViewModel.backToSearchHandler = { [weak self] in self?.recommendationsViewHandler?.popToRootViewController() }
         recommendationViewModel.addToMixHandler = { [weak self] in self?.addSeedTrackToMix(recommendationViewModel) }
 
