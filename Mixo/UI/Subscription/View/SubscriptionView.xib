@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Rounded-Semibold.otf">
+            <string>SFProRounded-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SubscriptionView" customModule="Mixo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bkb-HY-u90">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wLL-GO-571">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <subviews>
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shk-EB-8ra">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VAK-xD-OdY">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get Mixo Pro" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEC-9t-MMO">
+                                            <rect key="frame" x="145" y="20" width="124" height="27"/>
+                                            <fontDescription key="fontDescription" name="SFProRounded-Semibold" family="SF Pro Rounded" pointSize="22"/>
+                                            <color key="textColor" red="0.13725490200000001" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sCE-3v-TKd">
+                                            <rect key="frame" x="0.0" y="67" width="414" height="220"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="220" id="pNO-kf-hFC"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="sCE-3v-TKd" secondAttribute="trailing" id="1i6-GF-WhA"/>
+                                        <constraint firstItem="KEC-9t-MMO" firstAttribute="top" secondItem="VAK-xD-OdY" secondAttribute="top" constant="20" id="ANI-i2-0Ws"/>
+                                        <constraint firstItem="sCE-3v-TKd" firstAttribute="leading" secondItem="VAK-xD-OdY" secondAttribute="leading" id="bNj-SQ-E2o"/>
+                                        <constraint firstItem="sCE-3v-TKd" firstAttribute="top" secondItem="KEC-9t-MMO" secondAttribute="bottom" constant="20" id="eUB-w8-Qeo"/>
+                                        <constraint firstItem="KEC-9t-MMO" firstAttribute="centerX" secondItem="VAK-xD-OdY" secondAttribute="centerX" id="gKH-zN-3NQ"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="VAK-xD-OdY" firstAttribute="top" secondItem="shk-EB-8ra" secondAttribute="top" id="088-Os-RTk"/>
+                                <constraint firstAttribute="bottom" secondItem="VAK-xD-OdY" secondAttribute="bottom" id="ohC-Wu-pob"/>
+                                <constraint firstAttribute="trailing" secondItem="VAK-xD-OdY" secondAttribute="trailing" id="rhZ-Lg-Awt"/>
+                                <constraint firstItem="VAK-xD-OdY" firstAttribute="leading" secondItem="shk-EB-8ra" secondAttribute="leading" id="xQU-Qy-Mjd"/>
+                            </constraints>
+                        </scrollView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="shk-EB-8ra" firstAttribute="top" secondItem="wLL-GO-571" secondAttribute="top" id="IY2-7O-P43"/>
+                        <constraint firstItem="shk-EB-8ra" firstAttribute="leading" secondItem="wLL-GO-571" secondAttribute="leading" id="X16-Zo-NSi"/>
+                        <constraint firstAttribute="bottom" secondItem="shk-EB-8ra" secondAttribute="bottom" id="g5i-oZ-F5V"/>
+                        <constraint firstItem="VAK-xD-OdY" firstAttribute="width" secondItem="wLL-GO-571" secondAttribute="width" id="oaI-F5-b45"/>
+                        <constraint firstAttribute="trailing" secondItem="shk-EB-8ra" secondAttribute="trailing" id="vgi-7U-2u1"/>
+                        <constraint firstItem="VAK-xD-OdY" firstAttribute="height" secondItem="wLL-GO-571" secondAttribute="height" priority="250" id="x4j-po-Wz0"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="bkb-HY-u90" secondAttribute="trailing" id="8Ac-Xz-xbg"/>
+                <constraint firstAttribute="bottom" secondItem="wLL-GO-571" secondAttribute="bottom" id="9dD-xj-V1t"/>
+                <constraint firstItem="wLL-GO-571" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="A26-u2-Qrh"/>
+                <constraint firstAttribute="trailing" secondItem="wLL-GO-571" secondAttribute="trailing" id="Kdz-wy-fta"/>
+                <constraint firstItem="bkb-HY-u90" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="i6r-G5-blQ"/>
+                <constraint firstItem="wLL-GO-571" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="iMN-Ln-jCu"/>
+                <constraint firstItem="bkb-HY-u90" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ilz-yY-b6Y"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="bkb-HY-u90" secondAttribute="bottom" id="lV6-nA-ged"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="featuresView" destination="sCE-3v-TKd" id="X2O-d6-srK"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="145.98214285714286"/>
+        </view>
+    </objects>
+</document>

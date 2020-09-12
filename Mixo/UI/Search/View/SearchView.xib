@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Rounded-Heavy.otf">
+            <string>SFProRounded-Heavy</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SearchView" customModule="Mixo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ffA-Uq-Qgk">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="224"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_blurred" translatesAutoresizingMaskIntoConstraints="NO" id="rJ1-Fd-yce">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="224"/>
+                        </imageView>
+                        <visualEffectView opaque="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eq0-Vv-v6o">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="224"/>
+                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="68C-iu-sdD">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="224"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aEY-fe-sNC">
+                                        <rect key="frame" x="0.0" y="0.0" width="174" height="96"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6yU-sk-1FW">
+                                            <rect key="frame" x="0.0" y="0.0" width="174" height="96"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                        <vibrancyEffect>
+                                            <blurEffect style="regular"/>
+                                        </vibrancyEffect>
+                                    </visualEffectView>
+                                </subviews>
+                            </view>
+                            <color key="backgroundColor" red="0.066666666669999999" green="0.08235294118" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <blurEffect style="dark"/>
+                        </visualEffectView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hey, just find the track you want to mix" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vVo-PI-tvQ">
+                            <rect key="frame" x="20" y="73" width="317" height="53"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="317" id="jai-nC-eho"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="SFProRounded-Heavy" family="SF Pro Rounded" pointSize="22"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O7U-3Z-s41" customClass="SearchBar" customModule="Mixo" customModuleProvider="target">
+                            <rect key="frame" x="20" y="146" width="374" height="50"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="hGs-Ao-oh2"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <integer key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusValue">
+                                    <real key="value" value="20"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.066666666666666666" green="0.082352941176470587" blue="0.38823529411764707" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="rJ1-Fd-yce" secondAttribute="bottom" id="44C-Cm-OOJ"/>
+                        <constraint firstAttribute="bottom" secondItem="eq0-Vv-v6o" secondAttribute="bottom" id="4kM-no-IHG"/>
+                        <constraint firstItem="vVo-PI-tvQ" firstAttribute="leading" secondItem="ffA-Uq-Qgk" secondAttribute="leading" constant="20" id="Av6-sS-3om"/>
+                        <constraint firstItem="O7U-3Z-s41" firstAttribute="top" secondItem="vVo-PI-tvQ" secondAttribute="bottom" constant="20" id="CI2-7c-77b"/>
+                        <constraint firstItem="rJ1-Fd-yce" firstAttribute="leading" secondItem="ffA-Uq-Qgk" secondAttribute="leading" id="CPG-VO-sQR"/>
+                        <constraint firstAttribute="trailing" secondItem="rJ1-Fd-yce" secondAttribute="trailing" id="KV0-ZB-Tld"/>
+                        <constraint firstItem="eq0-Vv-v6o" firstAttribute="leading" secondItem="ffA-Uq-Qgk" secondAttribute="leading" id="OvJ-p2-pky"/>
+                        <constraint firstItem="eq0-Vv-v6o" firstAttribute="top" secondItem="ffA-Uq-Qgk" secondAttribute="top" id="P2s-sx-0Ke"/>
+                        <constraint firstAttribute="height" constant="224" id="PUQ-N8-kuW"/>
+                        <constraint firstAttribute="bottom" secondItem="O7U-3Z-s41" secondAttribute="bottom" constant="28" id="Pux-vq-sw4"/>
+                        <constraint firstAttribute="trailing" secondItem="O7U-3Z-s41" secondAttribute="trailing" constant="20" id="QVq-PQ-Jw7"/>
+                        <constraint firstItem="O7U-3Z-s41" firstAttribute="leading" secondItem="ffA-Uq-Qgk" secondAttribute="leading" constant="20" id="aKl-Qj-3Eb"/>
+                        <constraint firstItem="rJ1-Fd-yce" firstAttribute="top" secondItem="ffA-Uq-Qgk" secondAttribute="top" id="mio-eP-Ck3"/>
+                        <constraint firstAttribute="trailing" secondItem="eq0-Vv-v6o" secondAttribute="trailing" id="xMf-Mt-2Wx"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AEK-9W-w80">
+                    <rect key="frame" x="0.0" y="224" width="414" height="638"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <inset key="separatorInset" minX="88" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="AEK-9W-w80" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="0wa-S4-8W0"/>
+                <constraint firstItem="ffA-Uq-Qgk" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="D7P-7a-YD2"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="AEK-9W-w80" secondAttribute="trailing" id="YZy-NR-Yhk"/>
+                <constraint firstItem="AEK-9W-w80" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="cKs-bd-6AG"/>
+                <constraint firstItem="ffA-Uq-Qgk" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="eJd-vW-wba"/>
+                <constraint firstItem="ffA-Uq-Qgk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="evB-0V-7oQ"/>
+                <constraint firstItem="AEK-9W-w80" firstAttribute="top" secondItem="ffA-Uq-Qgk" secondAttribute="bottom" id="fgS-of-NT2"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="searchBar" destination="O7U-3Z-s41" id="9bx-XR-0ob"/>
+                <outlet property="tableView" destination="AEK-9W-w80" id="g9K-eA-uFO"/>
+            </connections>
+            <point key="canvasLocation" x="47.826086956521742" y="66.964285714285708"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="background_blurred" width="621" height="1104"/>
+    </resources>
+</document>

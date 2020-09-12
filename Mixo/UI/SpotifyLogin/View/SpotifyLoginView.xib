@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Rounded-Light.otf">
+            <string>SFProRounded-Light</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SpotifyLoginView" customModule="Mixo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="232"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nmp-29-eSf">
+                    <rect key="frame" x="20" y="162" width="374" height="50"/>
+                    <color key="backgroundColor" red="0.11372549019607843" green="0.72549019607843135" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="VH2-84-ioQ"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="15" maxY="0.0"/>
+                    <state key="normal" title="Login with Spotify" image="spotify-icon">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusValue">
+                            <real key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didTapSpotifyLoginButton" destination="iN0-l3-epB" eventType="touchUpInside" id="r85-7J-IdA"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In order to use Mixo service you have to login into your Spotify account" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EbZ-Vv-SrI">
+                    <rect key="frame" x="20" y="20" width="374" height="122"/>
+                    <fontDescription key="fontDescription" name="SFProRounded-Light" family="SF Pro Rounded" pointSize="17"/>
+                    <color key="textColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Nmp-29-eSf" secondAttribute="bottom" constant="20" id="2dM-Ib-sG1"/>
+                <constraint firstItem="Nmp-29-eSf" firstAttribute="top" secondItem="EbZ-Vv-SrI" secondAttribute="bottom" constant="20" id="Owp-Z0-PHP"/>
+                <constraint firstItem="Nmp-29-eSf" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="TCR-r1-y3W"/>
+                <constraint firstAttribute="trailing" secondItem="EbZ-Vv-SrI" secondAttribute="trailing" constant="20" id="c3E-sr-Mu4"/>
+                <constraint firstItem="EbZ-Vv-SrI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="cKd-pc-gvd"/>
+                <constraint firstItem="EbZ-Vv-SrI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="iFa-je-AU5"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Nmp-29-eSf" secondAttribute="trailing" constant="20" id="jfd-eC-2ec"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="spotifyLoginButton" destination="Nmp-29-eSf" id="LE4-9T-YSY"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="243.08035714285714"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="spotify-icon" width="30" height="30"/>
+    </resources>
+</document>

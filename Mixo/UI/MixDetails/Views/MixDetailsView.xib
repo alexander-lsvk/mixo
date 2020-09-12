@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT" customClass="MixDetailsView" customModule="Mixo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cj4-wx-Wos">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                </tableView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_blurred" translatesAutoresizingMaskIntoConstraints="NO" id="Us3-Pl-Iox">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                </imageView>
+                <visualEffectView opaque="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dlX-vy-14S">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="sXp-Ut-d6l">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WLf-dg-fcl">
+                                <rect key="frame" x="0.0" y="0.0" width="174" height="0.0"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="sWZ-x1-yEy">
+                                    <rect key="frame" x="0.0" y="0.0" width="174" height="0.0"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <vibrancyEffect>
+                                    <blurEffect style="regular"/>
+                                </vibrancyEffect>
+                            </visualEffectView>
+                        </subviews>
+                    </view>
+                    <color key="backgroundColor" red="0.066666666669999999" green="0.08235294118" blue="0.24313725489999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <blurEffect style="dark"/>
+                </visualEffectView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="dlX-vy-14S" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="11u-jV-fvB"/>
+                <constraint firstItem="cj4-wx-Wos" firstAttribute="top" secondItem="dlX-vy-14S" secondAttribute="bottom" id="FVE-L6-C7H"/>
+                <constraint firstItem="Us3-Pl-Iox" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="FYd-Qb-gml"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cj4-wx-Wos" secondAttribute="trailing" id="FZY-Pp-PHx"/>
+                <constraint firstItem="Us3-Pl-Iox" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="MmE-oc-4m9"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="cj4-wx-Wos" secondAttribute="bottom" id="SPA-fd-1Sk"/>
+                <constraint firstItem="Us3-Pl-Iox" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="TTh-an-qD4"/>
+                <constraint firstItem="dlX-vy-14S" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Y2i-lB-73s"/>
+                <constraint firstItem="cj4-wx-Wos" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ZhG-vK-lWR"/>
+                <constraint firstItem="cj4-wx-Wos" firstAttribute="top" secondItem="Us3-Pl-Iox" secondAttribute="bottom" id="omw-nl-R6X"/>
+                <constraint firstItem="cj4-wx-Wos" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="qGo-Nu-D2j"/>
+                <constraint firstItem="dlX-vy-14S" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="r6c-y7-wh7"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <connections>
+                <outlet property="tableView" destination="cj4-wx-Wos" id="vcG-Ae-50q"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="114.50892857142857"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="background_blurred" width="621" height="1104"/>
+    </resources>
+</document>

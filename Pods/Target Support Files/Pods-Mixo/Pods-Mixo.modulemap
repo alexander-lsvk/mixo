@@ -1,0 +1,6 @@
+framework module Pods_Mixo {
+  umbrella header "Pods-Mixo-umbrella.h"
+
+  export *
+  module * { export * }
+}

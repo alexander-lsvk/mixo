@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Rounded-Light.otf">
+            <string>SFProRounded-Light</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="RecommendationsSortView" customModule="Mixo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="581-fa-XhW">
+                    <rect key="frame" x="20" y="15" width="374" height="19"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="19" id="xp4-wO-uCq"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="SFProRounded-Light" family="SF Pro Rounded" pointSize="16"/>
+                    <color key="textColor" red="0.43529411759999997" green="0.49019607840000001" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="O1v-xU-Gda">
+                    <rect key="frame" x="20" y="39" width="374" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="31" id="fem-03-MoR"/>
+                    </constraints>
+                    <segments>
+                        <segment title="🔥 Best"/>
+                        <segment title="🥁 BPM ↓"/>
+                        <segment title="🥁 BPM ↑"/>
+                    </segments>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="didChangeSegmentedControlValue:" destination="iN0-l3-epB" eventType="valueChanged" id="vQd-hZ-Ugj"/>
+                    </connections>
+                </segmentedControl>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="O1v-xU-Gda" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="Ips-nV-6rZ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="O1v-xU-Gda" secondAttribute="bottom" constant="20" id="Pju-MB-feq"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="O1v-xU-Gda" secondAttribute="trailing" constant="20" id="VM7-AU-Byu"/>
+                <constraint firstItem="O1v-xU-Gda" firstAttribute="top" secondItem="581-fa-XhW" secondAttribute="bottom" constant="5" id="ag6-bH-whI"/>
+                <constraint firstItem="581-fa-XhW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="oBg-H2-mHC"/>
+                <constraint firstAttribute="trailing" secondItem="581-fa-XhW" secondAttribute="trailing" constant="20" id="pH5-l3-ao1"/>
+                <constraint firstItem="581-fa-XhW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="unt-bU-INQ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="segmentedControl" destination="O1v-xU-Gda" id="Ouq-xr-jGA"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="-26.450892857142858"/>
+        </view>
+    </objects>
+</document>
