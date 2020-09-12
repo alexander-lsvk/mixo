@@ -7,7 +7,6 @@ target 'Mixo' do
   pod 'Moya', '~> 13.0'
   pod 'Kingfisher', '~> 5.5'
   pod 'UIImageColors'
-  pod 'AudioIndicatorBars', '~> 0.0.2'
   pod 'FontAwesome.swift'
   pod 'StatusAlert', '~> 1.1.1'
   pod 'SwipeCellKit'

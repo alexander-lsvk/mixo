@@ -274,7 +274,7 @@ extension RecommendationsPresenter {
 
         getAudioPreviewUrl(for: id) { [weak self] url in
             guard let url = url else {
-                self?.baseViewHandler?.showMessage(.error, "Preview is unavailable for the selected track")
+                self?.baseViewHandler?.showMessage(.error, "Audio preview is unavailable for the selected track")
                 return
             }
 

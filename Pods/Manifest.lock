@@ -159,7 +159,6 @@ PODS:
     - abseil/base/config
     - abseil/meta/type_traits
   - Alamofire (4.8.2)
-  - AudioIndicatorBars (0.0.2)
   - BoringSSL-GRPC (0.0.3):
     - BoringSSL-GRPC/Implementation (= 0.0.3)
     - BoringSSL-GRPC/Interface (= 0.0.3)
@@ -320,7 +319,6 @@ PODS:
   - UIImageColors (2.1.0)
 
 DEPENDENCIES:
-  - AudioIndicatorBars (~> 0.0.2)
   - CodableFirebase
   - FBSDKCoreKit/Swift
   - FBSDKLoginKit/Swift
@@ -348,7 +346,6 @@ SPEC REPOS:
   trunk:
     - abseil
     - Alamofire
-    - AudioIndicatorBars
     - BoringSSL-GRPC
     - CodableFirebase
     - FBSDKCoreKit
@@ -393,7 +390,6 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   abseil: 18063d773f5366ff8736a050fe035a28f635fd27
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
-  AudioIndicatorBars: 10bf47c8422578dab5046e795a85a0f9b292d57d
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
   CodableFirebase: 0bf201991eeec35eb9fcd987d271ea463cf34a80
   FBSDKCoreKit: ada5c8a05188daefc9addb985c52b8a1b26da519
@@ -435,6 +431,6 @@ SPEC CHECKSUMS:
   SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
   UIImageColors: d2ef3b0877d203cbb06489eeb78ea8b7788caabe
 
-PODFILE CHECKSUM: 67512f4c166bc8595578d5b08783bf2c81a154d5
+PODFILE CHECKSUM: 187ddc43872c2c7f156416288c974bda6e08293b
 
-COCOAPODS: 1.10.0.beta.2
+COCOAPODS: 1.9.3

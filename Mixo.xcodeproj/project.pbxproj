@@ -42,6 +42,9 @@
 		BE00734A6D94F0693E97DF26 /* Pods_MixoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 677C59B13822EB8DBD6AA294 /* Pods_MixoTests.framework */; };
 		C17996FD250CFFFA0048FEEE /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17996FC250CFFFA0048FEEE /* MainTabViewController.swift */; };
 		C17996FF250D136D0048FEEE /* MainTabPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17996FE250D136D0048FEEE /* MainTabPresenter.swift */; };
+		C1799705250D329B0048FEEE /* Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1799702250D32950048FEEE /* Bar.swift */; };
+		C1799706250D329B0048FEEE /* AudioIndicatorBarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1799703250D32980048FEEE /* AudioIndicatorBarsView.swift */; };
+		C1799707250D329B0048FEEE /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1799704250D329B0048FEEE /* DoubleExtension.swift */; };
 		CE23EF89250CF65C00AABC12 /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23EF87250CF65C00AABC12 /* TrackTableViewCell.swift */; };
 		CE23EF8A250CF65C00AABC12 /* TrackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE23EF88250CF65C00AABC12 /* TrackTableViewCell.xib */; };
 		CE23EF8D250CFA2C00AABC12 /* TrackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23EF8C250CFA2C00AABC12 /* TrackViewModel.swift */; };
@@ -171,6 +174,9 @@
 		6BCB8DE804DCD4C6CF94DA7D /* Pods-Mixo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mixo.debug.xcconfig"; path = "Target Support Files/Pods-Mixo/Pods-Mixo.debug.xcconfig"; sourceTree = "<group>"; };
 		C17996FC250CFFFA0048FEEE /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		C17996FE250D136D0048FEEE /* MainTabPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabPresenter.swift; sourceTree = "<group>"; };
+		C1799702250D32950048FEEE /* Bar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bar.swift; sourceTree = "<group>"; };
+		C1799703250D32980048FEEE /* AudioIndicatorBarsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioIndicatorBarsView.swift; sourceTree = "<group>"; };
+		C1799704250D329B0048FEEE /* DoubleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		C1EFD063D2987E80DBC61B91 /* Pods_Mixo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mixo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE23EF87250CF65C00AABC12 /* TrackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
 		CE23EF88250CF65C00AABC12 /* TrackTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackTableViewCell.xib; sourceTree = "<group>"; };
@@ -396,6 +402,25 @@
 			path = MainTab;
 			sourceTree = "<group>";
 		};
+		C1799700250D31020048FEEE /* TrackTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CE23EF87250CF65C00AABC12 /* TrackTableViewCell.swift */,
+				CE23EF88250CF65C00AABC12 /* TrackTableViewCell.xib */,
+			);
+			path = TrackTableViewCell;
+			sourceTree = "<group>";
+		};
+		C1799701250D31190048FEEE /* AudioIndicatorView */ = {
+			isa = PBXGroup;
+			children = (
+				C1799703250D32980048FEEE /* AudioIndicatorBarsView.swift */,
+				C1799702250D32950048FEEE /* Bar.swift */,
+				C1799704250D329B0048FEEE /* DoubleExtension.swift */,
+			);
+			path = AudioIndicatorView;
+			sourceTree = "<group>";
+		};
 		CE23EF85250CF63000AABC12 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -408,8 +433,8 @@
 		CE23EF86250CF64600AABC12 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CE23EF87250CF65C00AABC12 /* TrackTableViewCell.swift */,
-				CE23EF88250CF65C00AABC12 /* TrackTableViewCell.xib */,
+				C1799701250D31190048FEEE /* AudioIndicatorView */,
+				C1799700250D31020048FEEE /* TrackTableViewCell */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1049,14 +1074,17 @@
 				E85D526123218CF3005D0C91 /* SubscriptionView.swift in Sources */,
 				1119DBCE2448989F0094C9BC /* LoadingStatusView.swift in Sources */,
 				112E8F8B245DD231004285E9 /* SpotifyLoginViewController.swift in Sources */,
+				C1799705250D329B0048FEEE /* Bar.swift in Sources */,
 				E81E3E9A23CCF91B00D7E134 /* MixDetailsPresenter.swift in Sources */,
 				117D557C2442F577008D858F /* ErrorResponse.swift in Sources */,
 				112B2B15241637370085CA09 /* FileStorageService.swift in Sources */,
 				E8E4925322AD0FC10031B241 /* Camelot.swift in Sources */,
 				E84A2BB923C9F67C0005B2CE /* MixViewModel.swift in Sources */,
 				1119DBDF2449CC4B0094C9BC /* UIViewController+ChildViewController.swift in Sources */,
+				C1799707250D329B0048FEEE /* DoubleExtension.swift in Sources */,
 				E8A0AB9D22AE6CF300EFE5C0 /* AudioFeatures.swift in Sources */,
 				E84A2BB723C9F67C0005B2CE /* MixesViewController.swift in Sources */,
+				C1799706250D329B0048FEEE /* AudioIndicatorBarsView.swift in Sources */,
 				E8AD094A2396D0DF00384302 /* AudioPreviewService.swift in Sources */,
 				E81E3E9C23CCF91B00D7E134 /* MixDetailsView.swift in Sources */,
 				11E6882824460A36002C615A /* SecuredStorageService.swift in Sources */,

@@ -40,25 +40,10 @@ class SearchViewController: BaseViewController<SearchPresenter> {
 
         }, presentMixesViewController: { [weak self] mixesPresenter in
             let mixesViewController = MixesViewController(presenter: mixesPresenter)
-            let navigationController = UINavigationController(rootViewController: mixesViewController)
-
-            self?.present(navigationController, animated: true)
-
-        }, presentSpotifyLoginViewController: { [weak self] presenter in
-            let spotifyLoginViewController = SpotifyLoginViewController(presenter: presenter)
-            let swiftMessagesSegue = SwiftMessagesSegue(identifier: nil, source: self!, destination: spotifyLoginViewController)
-            swiftMessagesSegue.interactiveHide = false
-            swiftMessagesSegue.configure(layout: .centered)
-            swiftMessagesSegue.messageView.layoutMarginAdditions = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
-            swiftMessagesSegue.dimMode = .blur(style: .light, alpha: 1.0, interactive: false)
-            swiftMessagesSegue.perform()
-
-        }, showMixesViewController: { [weak self] presenter in
-            let mixesViewController = MixesViewController(presenter: presenter)
             let swiftMessagesSegue = SwiftMessagesSegue(identifier: nil, source: self!, destination: mixesViewController)
             swiftMessagesSegue.configure(layout: .bottomCard)
             swiftMessagesSegue.perform()
-            
+
         }, showAddedToMix: {
             let statusAlert = StatusAlert()
             if #available(iOS 13.0, *) {

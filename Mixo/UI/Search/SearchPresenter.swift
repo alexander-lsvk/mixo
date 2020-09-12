@@ -17,12 +17,7 @@ struct SearchViewHandler {
     let setViewModels: (_ viewModels: [SearchResultViewModel]?) -> Void
     let presentRecommendationsViewController: (_ presenter: RecommendationsPresenter) -> Void
     let presentMixesViewController: (_ presenter: MixesPresenter) -> Void
-<<<<<<< HEAD
-=======
-    let presentSpotifyLoginViewController: (_ presenter: SpotifyLoginPresenter) -> Void
-    let showMixesViewController: (_ presenter: MixesPresenter) -> Void
     let showAddedToMix: () -> Void
->>>>>>> 6de5cc22ed5ab3e4d6c5dcfa1f4d791ab3e6068b
     let becomeFirstResponder: () -> Void
 }
 
@@ -190,12 +185,12 @@ extension SearchPresenter {
                 return
         }
         let mixTrack = MixTrack(with: track, and: audioFeatures)
-        searchViewHandler?.showMixesViewController(MixesPresenter(displayMode: .add(track: mixTrack,
-                                                                                             completionHandler: { [weak self] in
-                                                                                                self?.updateLastAction()
-                                                                                                self?.searchViewHandler?.showAddedToMix()
-                                                                                                SwiftRater.check()
-                                                                                             })))
+        searchViewHandler?.presentMixesViewController(MixesPresenter(displayMode: .add(track: mixTrack,
+                                                                                       completionHandler: { [weak self] in
+                                                                                           self?.updateLastAction()
+                                                                                           self?.searchViewHandler?.showAddedToMix()
+                                                                                           SwiftRater.check()
+                                                                                       })))
     }
     
     private func updateLastAction() {
