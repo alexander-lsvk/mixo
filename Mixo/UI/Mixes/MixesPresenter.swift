@@ -36,7 +36,6 @@ final class MixesPresenter: Presenter {
     }
     
     func didBindController() {
-        baseViewHandler?.setTitle("Mixes")
         switch displayMode {
         case .add:  mixesViewHandler?.showAddToNewMixButton()
         default:    break

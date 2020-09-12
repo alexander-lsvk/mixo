@@ -16,15 +16,12 @@ struct SearchViewHandler {
     let setViewModels: (_ viewModels: [SearchResultViewModel]?) -> Void
     let presentRecommendationsViewController: (_ presenter: RecommendationsPresenter) -> Void
     let presentMixesViewController: (_ presenter: MixesPresenter) -> Void
-    let presentSpotifyLoginViewController: (_ presenter: SpotifyLoginPresenter) -> Void
     let becomeFirstResponder: () -> Void
 }
 
 final class SearchPresenter: Presenter {
     var baseViewHandler: BaseViewHandler?
     var searchViewHandler: SearchViewHandler?
-
-    var spotifyLoginPresenter: SpotifyLoginPresenter?
 
     private var tracks: [Track]?
 
@@ -57,22 +54,6 @@ final class SearchPresenter: Presenter {
                                                                              "device": UIDevice().name,
                                                                              "lastAction": Timestamp(date: Date())])
             }
-        }
-
-        if let spotifyLoginPresenter = spotifyLoginPresenter {
-            if !authenticationService.isLoggedIn {
-                searchViewHandler?.presentSpotifyLoginViewController(spotifyLoginPresenter)
-                spotifyLoginPresenter.completionHandler = { [weak self] in
-                    self?.searchViewHandler?.becomeFirstResponder()
-                }
-            } else if authenticationService.tokenNeedsRefresh {
-                baseViewHandler?.showStatus(.loading, true)
-                spotifyLoginPresenter.updateSession { [weak self] in
-                    self?.baseViewHandler?.hideStatus(true)
-                    self?.searchViewHandler?.becomeFirstResponder()
-                }
-            }
-            return
         }
 
         searchViewHandler?.becomeFirstResponder()

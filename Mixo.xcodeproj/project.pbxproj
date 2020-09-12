@@ -40,6 +40,8 @@
 		959A4FD36071FAB40A6C9D5C /* Pods_MixoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60588C0CED19CCD418171F81 /* Pods_MixoUITests.framework */; };
 		B047252989D86615C15149B0 /* Pods_Mixo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1EFD063D2987E80DBC61B91 /* Pods_Mixo.framework */; };
 		BE00734A6D94F0693E97DF26 /* Pods_MixoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 677C59B13822EB8DBD6AA294 /* Pods_MixoTests.framework */; };
+		C17996FD250CFFFA0048FEEE /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17996FC250CFFFA0048FEEE /* MainTabViewController.swift */; };
+		C17996FF250D136D0048FEEE /* MainTabPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17996FE250D136D0048FEEE /* MainTabPresenter.swift */; };
 		E81E3E8D23CA2DE700D7E134 /* Mix.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81E3E8C23CA2DE700D7E134 /* Mix.swift */; };
 		E81E3E9823CCF91B00D7E134 /* MixDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E81E3E9023CCF91B00D7E134 /* MixDetailTableViewCell.xib */; };
 		E81E3E9923CCF91B00D7E134 /* MixDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81E3E9123CCF91B00D7E134 /* MixDetailTableViewCell.swift */; };
@@ -170,6 +172,8 @@
 		60588C0CED19CCD418171F81 /* Pods_MixoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MixoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		677C59B13822EB8DBD6AA294 /* Pods_MixoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MixoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BCB8DE804DCD4C6CF94DA7D /* Pods-Mixo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mixo.debug.xcconfig"; path = "Target Support Files/Pods-Mixo/Pods-Mixo.debug.xcconfig"; sourceTree = "<group>"; };
+		C17996FC250CFFFA0048FEEE /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
+		C17996FE250D136D0048FEEE /* MainTabPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabPresenter.swift; sourceTree = "<group>"; };
 		C1EFD063D2987E80DBC61B91 /* Pods_Mixo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mixo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D075D223BE98C114E2337A4B /* Pods-MixoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MixoUITests.release.xcconfig"; path = "Target Support Files/Pods-MixoUITests/Pods-MixoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E81E3E8C23CA2DE700D7E134 /* Mix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mix.swift; sourceTree = "<group>"; };
@@ -388,6 +392,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		C17996FB250CFD240048FEEE /* MainTab */ = {
+			isa = PBXGroup;
+			children = (
+				C17996FE250D136D0048FEEE /* MainTabPresenter.swift */,
+				C17996FC250CFFFA0048FEEE /* MainTabViewController.swift */,
+			);
+			path = MainTab;
+			sourceTree = "<group>";
+		};
 		DBEE048E929A5FFADAA684A4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -547,6 +560,7 @@
 		E86F89EC2295E4BB00785FFF /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				C17996FB250CFD240048FEEE /* MainTab */,
 				112E8F87245DD212004285E9 /* SpotifyLogin */,
 				E86F89F92295EC5900785FFF /* Search */,
 				E8785B7C229DB41100CCDD71 /* Recommendations */,
@@ -992,6 +1006,7 @@
 				E8785B88229DB5AD00CCDD71 /* RecommendationViewModel.swift in Sources */,
 				E8785B94229DBC6000CCDD71 /* RecommendationSongTableViewCell.swift in Sources */,
 				E8F6FE40229D736100FB1A5F /* SearchSongTableViewCell.swift in Sources */,
+				C17996FD250CFFFA0048FEEE /* MainTabViewController.swift in Sources */,
 				1119DBC7244898100094C9BC /* StatusViewContainer.swift in Sources */,
 				E8785B85229DB48300CCDD71 /* RecommendationsView.swift in Sources */,
 				116D54D0243A55B800EDC055 /* MixesDisplayMode.swift in Sources */,
@@ -1001,6 +1016,7 @@
 				E81E3E9B23CCF91B00D7E134 /* MixDetailsViewController.swift in Sources */,
 				E8A84AA222A2D30900212127 /* SearchBar.swift in Sources */,
 				E86F89AB2291F34A00785FFF /* SearchViewController.swift in Sources */,
+				C17996FF250D136D0048FEEE /* MainTabPresenter.swift in Sources */,
 				E8F6FE3D229D6E1C00FB1A5F /* Autolayout.swift in Sources */,
 				117D55842444FEC4008D858F /* RecommendationsSortView.swift in Sources */,
 				E84A2BB623C9F67C0005B2CE /* MixesPresenter.swift in Sources */,
@@ -1223,6 +1239,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = RQ4NX29V75;
@@ -1243,6 +1260,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.Mixo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Mixo/Mixo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

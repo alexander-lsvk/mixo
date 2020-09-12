@@ -43,15 +43,6 @@ class SearchViewController: BaseViewController<SearchPresenter> {
 
             self?.present(navigationController, animated: true)
 
-        }, presentSpotifyLoginViewController: { [weak self] presenter in
-            let spotifyLoginViewController = SpotifyLoginViewController(presenter: presenter)
-            let swiftMessagesSegue = SwiftMessagesSegue(identifier: nil, source: self!, destination: spotifyLoginViewController)
-            swiftMessagesSegue.interactiveHide = false
-            swiftMessagesSegue.configure(layout: .centered)
-            swiftMessagesSegue.messageView.layoutMarginAdditions = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
-            swiftMessagesSegue.dimMode = .blur(style: .light, alpha: 1.0, interactive: false)
-            swiftMessagesSegue.perform()
-
         }, becomeFirstResponder: { [weak self] in
             self?.searchView.becomeSearchFirstResponder()
         })

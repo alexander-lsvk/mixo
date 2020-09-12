@@ -53,11 +53,7 @@ extension MixesViewController {
 
         let addMixButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleAddMixButtonTap))
         addMixButton.tintColor = .white
-
-        let dismissButton = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(dismissMixesViewController))
-
         navigationItem.rightBarButtonItem = addMixButton
-        navigationItem.leftBarButtonItem = dismissButton
 
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }

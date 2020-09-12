@@ -15,7 +15,7 @@ import SwiftRater
 final class AppDelegate: UIResponder {
     var window: UIWindow?
 
-    private var searchPresenter: SearchPresenter?
+    private var mainTabPresenter: MainTabPresenter?
     private var spotifyLoginPresenter = SpotifyLoginPresenter()
 }
 
@@ -26,16 +26,17 @@ extension AppDelegate: UIApplicationDelegate {
         SwiftRater.showLaterButton = true
         SwiftRater.appLaunched()
 
-        let searchPresenter = SearchPresenter()
-        searchPresenter.spotifyLoginPresenter = spotifyLoginPresenter
+        let mainTabPresenter = MainTabPresenter()
+        mainTabPresenter.spotifyLoginPresenter = spotifyLoginPresenter
     
-        self.searchPresenter = searchPresenter
-
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window!.rootViewController = UINavigationController(rootViewController: SearchViewController(presenter: searchPresenter))
-        window!.makeKeyAndVisible()
+        self.mainTabPresenter = mainTabPresenter
 
         FirebaseApp.configure()
+
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window!.rootViewController = MainTabViewController(presenter: mainTabPresenter)
+        window!.makeKeyAndVisible()
+
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
 
         return true
