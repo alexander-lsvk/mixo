@@ -8,21 +8,24 @@
 
 import Foundation
 
-struct MixDetailViewModel {
+struct MixDetailViewModel: TrackViewModel {
     let trackId: String
     let artist: String
     let name: String
     let imageURL: URL?
     let key: Key?
-    let tempo: Float?
+    let tempo: Float
+    let place: TrackPlace = .mixDetails
+    let isMostHarmonic = false
 
     let didRemoveItemHandler: (_ tracksCount: Int) -> Void
-    var didSelectHandler: (MixDetailViewModel) -> Void
+    var didSelectHandler: (TrackViewModel) -> Void
     var showRecommendationsHandler: (() -> Void)?
+    var addToMixHandler: (() -> Void)?
 
     var isPlaying = false
 
-    init(_ mixTrack: MixTrack, didRemoveItemHandler: @escaping (_ tracksCount: Int) -> Void, didSelectHandler: @escaping (MixDetailViewModel) -> Void,
+    init(_ mixTrack: MixTrack, didRemoveItemHandler: @escaping (_ tracksCount: Int) -> Void, didSelectHandler: @escaping (TrackViewModel) -> Void,
         showRecommendationsHandler: @escaping () -> Void) {
         self.trackId = mixTrack.id
         self.artist = mixTrack.artists.map { $0.name }.joined(separator: ", ")

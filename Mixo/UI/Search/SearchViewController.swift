@@ -9,6 +9,7 @@
 import UIKit
 import Kingfisher
 import SwiftMessages
+import StatusAlert
 
 class SearchViewController: BaseViewController<SearchPresenter> {
     private let searchView = SearchView.loadViewFromXib()
@@ -52,6 +53,23 @@ class SearchViewController: BaseViewController<SearchPresenter> {
             swiftMessagesSegue.dimMode = .blur(style: .light, alpha: 1.0, interactive: false)
             swiftMessagesSegue.perform()
 
+        }, showMixesViewController: { [weak self] presenter in
+            let mixesViewController = MixesViewController(presenter: presenter)
+            let swiftMessagesSegue = SwiftMessagesSegue(identifier: nil, source: self!, destination: mixesViewController)
+            swiftMessagesSegue.configure(layout: .bottomCard)
+            swiftMessagesSegue.perform()
+            
+        }, showAddedToMix: {
+            let statusAlert = StatusAlert()
+            if #available(iOS 13.0, *) {
+                statusAlert.image = UIImage(systemName: "checkmark")
+            }
+            statusAlert.title = "Added to the mix"
+            statusAlert.appearance.blurStyle = .extraLight
+            statusAlert.alertShowingDuration = 1
+            statusAlert.canBePickedOrDismissed = true
+
+            statusAlert.showInKeyWindow()
         }, becomeFirstResponder: { [weak self] in
             self?.searchView.becomeSearchFirstResponder()
         })

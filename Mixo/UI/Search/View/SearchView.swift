@@ -43,8 +43,8 @@ extension SearchView: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SearchSongTableViewCell.reuseId,
-                                                 for: indexPath) as? SearchSongTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: TrackTableViewCell.reuseId,
+                                                 for: indexPath) as? TrackTableViewCell
         let viewModel = viewModels?[indexPath.row]
         cell?.update(with: viewModel)
         return cell ?? UITableViewCell()
@@ -67,7 +67,7 @@ extension SearchView: UITableViewDataSource, UITableViewDelegate {
 // MARK: - SkeletonTableViewDataSource
 extension SearchView: SkeletonTableViewDataSource {
     func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
-       return SearchSongTableViewCell.reuseId
+       return TrackTableViewCell.reuseId
     }
 }
 
@@ -77,7 +77,7 @@ extension SearchView {
         tableView.delegate = self
         tableView.dataSource = self
 
-        register(reusableCell: SearchSongTableViewCell.self)
+        register(reusableCell: TrackTableViewCell.self)
     }
 
     private func register<T: Reusable>(reusableCell: T.Type) {

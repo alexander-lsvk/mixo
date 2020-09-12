@@ -39,7 +39,7 @@ extension MixDetailsView {
         tableView.dataSource = self
         tableView.reorder.delegate = self
 
-        register(reusableCell: MixDetailTableViewCell.self)
+        register(reusableCell: TrackTableViewCell.self)
     }
 
     private func register<T: Reusable>(reusableCell: T.Type) {
@@ -63,7 +63,7 @@ extension MixDetailsView: UITableViewDataSource, UITableViewDelegate {
         if let spacer = tableView.reorder.spacerCell(for: indexPath) {
             return spacer
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: MixDetailTableViewCell.reuseId) as! MixDetailTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: TrackTableViewCell.reuseId) as! TrackTableViewCell
         let viewModel = viewModels[indexPath.row]
         cell.update(with: viewModel)
         cell.delegate = self
