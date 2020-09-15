@@ -42,16 +42,19 @@ final class RecommendationsPresenter: Presenter {
     private let showBackToSearchButton: Bool
 
     private let mixesService: MixesService
+    private let eventsService: EventsService
     private let networkService: NetworkService
     private let audioPreviewService: AudioPreviewService
     
     init(currentTrack: TrackConvertible,
          showBackToSearchButton: Bool = false,
+         eventsService: EventsService = .default,
          networkService: NetworkService = ProductionNetworkService(),
          audioPreviewService: AudioPreviewService = AudioPreviewService.shared,
          mixesService: MixesService = AnonymousMixesService.shared) {
         self.currentTrack = currentTrack
         self.showBackToSearchButton = showBackToSearchButton
+        self.eventsService = eventsService
         self.networkService = networkService
         self.audioPreviewService = audioPreviewService
         self.mixesService = mixesService
@@ -156,7 +159,7 @@ extension RecommendationsPresenter {
                                                                               tempo: tempo,
                                                                               isMostHarmonic: self.isMostHarmonic(key),
                                                                               didSelectHandler: { [weak self] viewModel in
-                                                                                  self?.playAudioPreview(for: viewModel.trackId)
+                                                                                  self?.didSelectTrackHandler(viewModel: viewModel, track: track)
                                                                               })
                         recommendationViewModel.addToMixHandler = { [weak self] in self?.addRecommendationToMix(recommendationViewModel) }
                         recommendationViewModel.backToSearchHandler = { [weak self] in self?.recommendationsViewHandler?.popToRootViewController() }
@@ -222,7 +225,7 @@ extension RecommendationsPresenter {
                                                               tempo: currentTrackFeatures?.tempo ?? 0,
                                                               isMostHarmonic: isMostHarmonic(key),
                                                               didSelectHandler: { [weak self] viewModel in
-                                                                  self?.playAudioPreview(for: viewModel.trackId)
+                                                                  self?.didSelectTrackHandler(viewModel: viewModel, track: self?.currentTrack)
                                                               })
 
         recommendationViewModel.isPlaying = isPlaying
@@ -231,7 +234,14 @@ extension RecommendationsPresenter {
 
         recommendationsViewHandler?.setCurrentTrackViewModel(recommendationViewModel)
     }
-    
+
+    private func didSelectTrackHandler(viewModel: TrackViewModel, track: TrackConvertible?) {
+        if let track = track as? Track {
+            eventsService.post(eventType: PlayerEvent.didStartPlayTrack, value: track)
+        }
+        // playAudioPreview(for: viewModel.trackId)
+    }
+
     private func getAudioPreviewUrl(for id: String, completion: @escaping (_ url: URL?) -> Void) {
         networkService.requestDecodable(.tracks(id: id)) { (result: Result<Track, Error>) in
             switch result {
@@ -243,7 +253,6 @@ extension RecommendationsPresenter {
 
     private func playAudioPreview(for id: String) {
         audioPreviewService.status = .stopped
-
         // Stop header track when tap on list track
         if currentTrack.id == playingTrackId {
             self.setCurrentTrackViewModel(isPlaying: false)

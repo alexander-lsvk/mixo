@@ -37,6 +37,7 @@ enum MainTab: Int, CaseIterable {
 struct MainTabViewHandler {
     let setupTabs: (_ tabs: [MainTab]) -> Void
     let presentSpotifyLoginViewController: (_ presenter: SpotifyLoginPresenter) -> Void
+    let showPlayerViewController: (_ presenter: PlayerPresenter) -> Void
 }
 
 final class MainTabPresenter: Presenter {
@@ -54,6 +55,7 @@ final class MainTabPresenter: Presenter {
     func didBindController() {
         // Setup tabs
         mainTabViewHandler?.setupTabs(MainTab.allCases)
+        mainTabViewHandler?.showPlayerViewController(PlayerPresenter())
 
         if let spotifyLoginPresenter = spotifyLoginPresenter {
             if !authenticationService.isLoggedIn {

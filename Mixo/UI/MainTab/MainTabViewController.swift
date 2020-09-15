@@ -20,6 +20,8 @@ final class MainTabViewController: BaseViewController<MainTabPresenter> {
         return tabController
     }
 
+    private var playerViewContainer = UIView()
+
     override func viewDidLoad() {
         presenter.mainTabViewHandler = MainTabViewHandler(setupTabs: { [weak self] mainTab in
             guard let self = self else {
@@ -37,6 +39,10 @@ final class MainTabViewController: BaseViewController<MainTabPresenter> {
             swiftMessagesSegue.messageView.layoutMarginAdditions = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
             swiftMessagesSegue.dimMode = .blur(style: .light, alpha: 1.0, interactive: false)
             swiftMessagesSegue.perform()
+
+        }, showPlayerViewController: { [weak self] presenter in
+            let playerViewController = PlayerViewController(presenter: presenter)
+            self?.addChildController(playerViewController, in: self!.playerViewContainer)
         })
 
         addChildController(tabController, in: view)
@@ -44,6 +50,16 @@ final class MainTabViewController: BaseViewController<MainTabPresenter> {
         super.viewDidLoad()
 
         tabController.tabBar.tintColor = UIColor(red: 35.0/255.0, green: 37.0/255.0, blue: 90.0/255.0, alpha: 1.0)
+
+        view.addSubview(playerViewContainer)
+        playerViewContainer.isUserInteractionEnabled = true
+        playerViewContainer.backgroundColor = .clear
+        playerViewContainer.addConstraints([equal(\.heightAnchor, to: 60.0),
+                                            equal(tabBarController!.tabBar, to: \.leadingAnchor, constant: 0.0),
+                                            equal(tabBarController!.tabBar, to: \.trailingAnchor, constant: 0.0),
+                                            equal(tabBarController!.tabBar, to: \.topAnchor, constant: -60.0)])
+        view.bringSubviewToFront(playerViewContainer)
+        view.insertSubview(playerViewContainer, aboveSubview: tabController.tabBar)
     }
 }
 

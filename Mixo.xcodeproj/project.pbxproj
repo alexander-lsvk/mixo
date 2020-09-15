@@ -40,11 +40,18 @@
 		959A4FD36071FAB40A6C9D5C /* Pods_MixoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60588C0CED19CCD418171F81 /* Pods_MixoUITests.framework */; };
 		B047252989D86615C15149B0 /* Pods_Mixo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1EFD063D2987E80DBC61B91 /* Pods_Mixo.framework */; };
 		BE00734A6D94F0693E97DF26 /* Pods_MixoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 677C59B13822EB8DBD6AA294 /* Pods_MixoTests.framework */; };
+		C161BC87250E0D350061CBB8 /* EventsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C161BC86250E0D350061CBB8 /* EventsService.swift */; };
+		C161BC89250E13690061CBB8 /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C161BC88250E13690061CBB8 /* PlayerViewModel.swift */; };
 		C17996FD250CFFFA0048FEEE /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17996FC250CFFFA0048FEEE /* MainTabViewController.swift */; };
 		C17996FF250D136D0048FEEE /* MainTabPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17996FE250D136D0048FEEE /* MainTabPresenter.swift */; };
 		C1799705250D329B0048FEEE /* Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1799702250D32950048FEEE /* Bar.swift */; };
 		C1799706250D329B0048FEEE /* AudioIndicatorBarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1799703250D32980048FEEE /* AudioIndicatorBarsView.swift */; };
 		C1799707250D329B0048FEEE /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1799704250D329B0048FEEE /* DoubleExtension.swift */; };
+		C179970A250D47D30048FEEE /* PlayerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1799709250D47D30048FEEE /* PlayerPresenter.swift */; };
+		C179970C250D47DD0048FEEE /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C179970B250D47DD0048FEEE /* PlayerViewController.swift */; };
+		C179970E250D47EE0048FEEE /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C179970D250D47EE0048FEEE /* PlayerView.swift */; };
+		C1799710250D47F70048FEEE /* PlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C179970F250D47F70048FEEE /* PlayerView.xib */; };
+		C1CC0EC125115B03009C41AE /* PlayingTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CC0EC025115B03009C41AE /* PlayingTrack.swift */; };
 		CE23EF89250CF65C00AABC12 /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23EF87250CF65C00AABC12 /* TrackTableViewCell.swift */; };
 		CE23EF8A250CF65C00AABC12 /* TrackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE23EF88250CF65C00AABC12 /* TrackTableViewCell.xib */; };
 		CE23EF8D250CFA2C00AABC12 /* TrackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23EF8C250CFA2C00AABC12 /* TrackViewModel.swift */; };
@@ -172,11 +179,18 @@
 		60588C0CED19CCD418171F81 /* Pods_MixoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MixoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		677C59B13822EB8DBD6AA294 /* Pods_MixoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MixoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BCB8DE804DCD4C6CF94DA7D /* Pods-Mixo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mixo.debug.xcconfig"; path = "Target Support Files/Pods-Mixo/Pods-Mixo.debug.xcconfig"; sourceTree = "<group>"; };
+		C161BC86250E0D350061CBB8 /* EventsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsService.swift; sourceTree = "<group>"; };
+		C161BC88250E13690061CBB8 /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
 		C17996FC250CFFFA0048FEEE /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		C17996FE250D136D0048FEEE /* MainTabPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabPresenter.swift; sourceTree = "<group>"; };
 		C1799702250D32950048FEEE /* Bar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bar.swift; sourceTree = "<group>"; };
 		C1799703250D32980048FEEE /* AudioIndicatorBarsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioIndicatorBarsView.swift; sourceTree = "<group>"; };
 		C1799704250D329B0048FEEE /* DoubleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
+		C1799709250D47D30048FEEE /* PlayerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerPresenter.swift; sourceTree = "<group>"; };
+		C179970B250D47DD0048FEEE /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		C179970D250D47EE0048FEEE /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		C179970F250D47F70048FEEE /* PlayerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerView.xib; sourceTree = "<group>"; };
+		C1CC0EC025115B03009C41AE /* PlayingTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingTrack.swift; sourceTree = "<group>"; };
 		C1EFD063D2987E80DBC61B91 /* Pods_Mixo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mixo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE23EF87250CF65C00AABC12 /* TrackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
 		CE23EF88250CF65C00AABC12 /* TrackTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackTableViewCell.xib; sourceTree = "<group>"; };
@@ -421,6 +435,27 @@
 			path = AudioIndicatorView;
 			sourceTree = "<group>";
 		};
+		C1799708250D47B70048FEEE /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				C1799709250D47D30048FEEE /* PlayerPresenter.swift */,
+				C179970B250D47DD0048FEEE /* PlayerViewController.swift */,
+				C161BC88250E13690061CBB8 /* PlayerViewModel.swift */,
+				C1CC0EC025115B03009C41AE /* PlayingTrack.swift */,
+				C1799711250D47FB0048FEEE /* Views */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		C1799711250D47FB0048FEEE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C179970D250D47EE0048FEEE /* PlayerView.swift */,
+				C179970F250D47F70048FEEE /* PlayerView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		CE23EF85250CF63000AABC12 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -611,6 +646,7 @@
 				E84A2BBB23C9F6840005B2CE /* Mixes */,
 				E81E3E8E23CCF8E500D7E134 /* MixDetails */,
 				E85D525A23218CB6005D0C91 /* Subscription */,
+				C1799708250D47B70048FEEE /* Player */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -624,6 +660,7 @@
 				112B2B11241636C20085CA09 /* StorageService */,
 				E86F89F42295E69000785FFF /* AuthenticationService.swift */,
 				11E6882924460A99002C615A /* TokenService.swift */,
+				C161BC86250E0D350061CBB8 /* EventsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -912,6 +949,7 @@
 				E89F356E23C67D8F004D6FAE /* SF-Pro-Rounded-Bold.otf in Resources */,
 				1119DBD0244898A90094C9BC /* EmptyStatusView.xib in Resources */,
 				E86F89B32291F34B00785FFF /* LaunchScreen.storyboard in Resources */,
+				C1799710250D47F70048FEEE /* PlayerView.xib in Resources */,
 				CE23EF8A250CF65C00AABC12 /* TrackTableViewCell.xib in Resources */,
 				1119DBCF244898A60094C9BC /* LoadingStatusView.xib in Resources */,
 				E86F89B02291F34B00785FFF /* Assets.xcassets in Resources */,
@@ -1037,14 +1075,17 @@
 				E84A2BB523C9F67C0005B2CE /* MixTableViewCell.swift in Sources */,
 				E8F6FE34229D6A9300FB1A5F /* SearchResultViewModel.swift in Sources */,
 				E8F6FE3B229D6DF100FB1A5F /* XibLoadable.swift in Sources */,
+				C179970E250D47EE0048FEEE /* PlayerView.swift in Sources */,
 				CE23EF89250CF65C00AABC12 /* TrackTableViewCell.swift in Sources */,
 				E8A84AA722A2D42C00212127 /* UIView+Border.swift in Sources */,
 				E85D525C23218CD4005D0C91 /* SubscriptionPresenter.swift in Sources */,
 				E8785B9B229DD7EF00CCDD71 /* Mode.swift in Sources */,
 				117D55792440D904008D858F /* MixDetailsViewModel.swift in Sources */,
+				C179970C250D47DD0048FEEE /* PlayerViewController.swift in Sources */,
 				E8785B88229DB5AD00CCDD71 /* RecommendationViewModel.swift in Sources */,
 				C17996FD250CFFFA0048FEEE /* MainTabViewController.swift in Sources */,
 				1119DBC7244898100094C9BC /* StatusViewContainer.swift in Sources */,
+				C161BC87250E0D350061CBB8 /* EventsService.swift in Sources */,
 				E8785B85229DB48300CCDD71 /* RecommendationsView.swift in Sources */,
 				116D54D0243A55B800EDC055 /* MixesDisplayMode.swift in Sources */,
 				E81E3E9D23CCF91B00D7E134 /* MixDetailViewModel.swift in Sources */,
@@ -1065,6 +1106,7 @@
 				E86F8A032295F1A600785FFF /* Presenter.swift in Sources */,
 				112E8F89245DD222004285E9 /* SpotifyLoginPresenter.swift in Sources */,
 				E8785B80229DB44D00CCDD71 /* RecommendationsPresenter.swift in Sources */,
+				C179970A250D47D30048FEEE /* PlayerPresenter.swift in Sources */,
 				E84A2BBE23C9FC650005B2CE /* Reusable.swift in Sources */,
 				E84A2BA823C9DD160005B2CE /* MixTrack.swift in Sources */,
 				11E6882D244707A1002C615A /* EditMixInfoPresenter.swift in Sources */,
@@ -1086,6 +1128,7 @@
 				E84A2BB723C9F67C0005B2CE /* MixesViewController.swift in Sources */,
 				C1799706250D329B0048FEEE /* AudioIndicatorBarsView.swift in Sources */,
 				E8AD094A2396D0DF00384302 /* AudioPreviewService.swift in Sources */,
+				C1CC0EC125115B03009C41AE /* PlayingTrack.swift in Sources */,
 				E81E3E9C23CCF91B00D7E134 /* MixDetailsView.swift in Sources */,
 				11E6882824460A36002C615A /* SecuredStorageService.swift in Sources */,
 				11E68831244707E7002C615A /* EditMixInfoViewModel.swift in Sources */,
@@ -1107,6 +1150,7 @@
 				E86F89F52295E69000785FFF /* AuthenticationService.swift in Sources */,
 				E8F6FE36229D6DAB00FB1A5F /* SearchView.swift in Sources */,
 				CE23EF8D250CFA2C00AABC12 /* TrackViewModel.swift in Sources */,
+				C161BC89250E13690061CBB8 /* PlayerViewModel.swift in Sources */,
 				112E8F8E245DD250004285E9 /* SpotifyLoginView.swift in Sources */,
 				E84A2BB823C9F67C0005B2CE /* MixesView.swift in Sources */,
 				E8785B8A229DB78600CCDD71 /* RecommendationsResponse.swift in Sources */,
