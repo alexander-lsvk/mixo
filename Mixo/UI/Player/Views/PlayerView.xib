@@ -42,19 +42,19 @@
                     </userDefinedRuntimeAttributes>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YHY-B0-VrO">
-                    <rect key="frame" x="76" y="10" width="318" height="40"/>
+                    <rect key="frame" x="76" y="10" width="334" height="40"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="QQn-vT-3M8">
-                            <rect key="frame" x="0.0" y="0.0" width="238" height="40"/>
+                            <rect key="frame" x="0.0" y="0.0" width="254" height="40"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nothing to play" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5LH-CG-joc">
-                                    <rect key="frame" x="0.0" y="0.0" width="238" height="19.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="254" height="19.5"/>
                                     <fontDescription key="fontDescription" name="SFProRounded-Semibold" family="SF Pro Rounded" pointSize="16"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hup-Mc-wJ9">
-                                    <rect key="frame" x="0.0" y="19.5" width="238" height="20.5"/>
+                                    <rect key="frame" x="0.0" y="19.5" width="254" height="20.5"/>
                                     <fontDescription key="fontDescription" name="SFProRounded-Light" family="SF Pro Rounded" pointSize="13"/>
                                     <color key="textColor" red="0.43529411759999997" green="0.49019607840000001" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -65,7 +65,7 @@
                             </subviews>
                         </stackView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j6g-TD-zfM">
-                            <rect key="frame" x="238" y="0.0" width="40" height="40"/>
+                            <rect key="frame" x="254" y="0.0" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="CXe-LR-QB0"/>
                                 <constraint firstAttribute="width" constant="40" id="sd3-Od-43L"/>
@@ -82,7 +82,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l0t-IK-zuW">
-                            <rect key="frame" x="278" y="0.0" width="40" height="40"/>
+                            <rect key="frame" x="294" y="0.0" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="5Su-80-TMN"/>
                                 <constraint firstAttribute="height" constant="40" id="GEi-NJ-qds"/>
@@ -108,7 +108,7 @@
                 <constraint firstItem="tB6-Uw-Okq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="7" id="XBY-di-2jc"/>
                 <constraint firstAttribute="bottom" secondItem="YHY-B0-VrO" secondAttribute="bottom" constant="10" id="cO5-mV-QFx"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="oYO-S6-ZnG" secondAttribute="trailing" id="cRd-WS-IxB"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="YHY-B0-VrO" secondAttribute="trailing" constant="20" id="df1-m2-ojk"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="YHY-B0-VrO" secondAttribute="trailing" constant="4" id="df1-m2-ojk"/>
                 <constraint firstAttribute="bottom" secondItem="oYO-S6-ZnG" secondAttribute="bottom" id="isO-au-ugY"/>
                 <constraint firstItem="YHY-B0-VrO" firstAttribute="leading" secondItem="tB6-Uw-Okq" secondAttribute="trailing" constant="10" id="tFQ-hF-OGO"/>
             </constraints>

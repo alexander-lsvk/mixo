@@ -44,19 +44,16 @@ final class RecommendationsPresenter: Presenter {
     private let mixesService: MixesService
     private let eventsService: EventsService
     private let networkService: NetworkService
-    private let audioPreviewService: AudioPreviewService
     
     init(currentTrack: TrackConvertible,
          showBackToSearchButton: Bool = false,
          eventsService: EventsService = .default,
          networkService: NetworkService = ProductionNetworkService(),
-         audioPreviewService: AudioPreviewService = AudioPreviewService.shared,
          mixesService: MixesService = AnonymousMixesService.shared) {
         self.currentTrack = currentTrack
         self.showBackToSearchButton = showBackToSearchButton
         self.eventsService = eventsService
         self.networkService = networkService
-        self.audioPreviewService = audioPreviewService
         self.mixesService = mixesService
     }
     
@@ -74,12 +71,6 @@ final class RecommendationsPresenter: Presenter {
             }
         })
         loadCurrentTrackFeatures(id: currentTrack.id)
-    }
-
-    func viewWillDisappear() {
-        if let playingTrackId = playingTrackId {
-            playAudioPreview(for: playingTrackId)
-        }
     }
 }
 
@@ -238,85 +229,6 @@ extension RecommendationsPresenter {
     private func didSelectTrackHandler(viewModel: TrackViewModel, track: TrackConvertible?) {
         if let track = track as? Track {
             eventsService.post(eventType: PlayerEvent.didStartPlayTrack, value: track)
-        }
-        // playAudioPreview(for: viewModel.trackId)
-    }
-
-    private func getAudioPreviewUrl(for id: String, completion: @escaping (_ url: URL?) -> Void) {
-        networkService.requestDecodable(.tracks(id: id)) { (result: Result<Track, Error>) in
-            switch result {
-            case .success(let response):    completion(response.previewUrl)
-            case .failure(let error):       self.baseViewHandler?.showMessage(.error, error.localizedDescription)
-            }
-        }
-    }
-
-    private func playAudioPreview(for id: String) {
-        audioPreviewService.status = .stopped
-        // Stop header track when tap on list track
-        if currentTrack.id == playingTrackId {
-            self.setCurrentTrackViewModel(isPlaying: false)
-            self.playingTrackId = nil
-            if currentTrack.id == id {
-                return
-            }
-        }
-
-        // If some track is playing
-        if playingTrackId != nil {
-            var recommendationViewModels = self.recommendationsViewModels
-            guard let index = recommendationViewModels.firstIndex(where: { $0.trackId == playingTrackId }) else {
-                if currentTrack.id == id {
-                    self.setCurrentTrackViewModel(isPlaying: false)
-                    self.playingTrackId = nil
-                }
-                return
-            }
-            recommendationViewModels[index].isPlaying = false
-            recommendationsViewHandler?.setViewModels(recommendationViewModels, false)
-
-            if playingTrackId == id {
-                playingTrackId = nil
-                return
-            }
-        }
-
-        getAudioPreviewUrl(for: id) { [weak self] url in
-            guard let url = url else {
-                self?.baseViewHandler?.showMessage(.error, "Audio preview is unavailable for the selected track")
-                return
-            }
-
-            self?.audioPreviewService.play(url: url) { status in
-                // If play header track
-                if self?.currentTrack.id == id {
-                    switch status {
-                    case .playing:
-                        self?.playingTrackId = id
-                        self?.setCurrentTrackViewModel(isPlaying: true)
-                    case .stopped:
-                        self?.setCurrentTrackViewModel(isPlaying: false)
-                    }
-                    return
-                } else {
-                    self?.setCurrentTrackViewModel(isPlaying: false)
-                }
-
-                // If play list track
-                var recommendationViewModels = self?.recommendationsViewModels
-                guard let self = self, let index = recommendationViewModels?.firstIndex(where: { $0.trackId == id }) else {
-                    return
-                }
-                switch status {
-                case .playing:
-                    self.playingTrackId = id
-                    recommendationViewModels?[index].isPlaying = true
-                case .stopped:
-                    recommendationViewModels?[index].isPlaying = false
-                    self.playingTrackId = nil
-                }
-                self.recommendationsViewHandler?.setViewModels(recommendationViewModels ?? [], false)
-            }
         }
     }
 
