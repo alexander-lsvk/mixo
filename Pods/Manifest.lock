@@ -307,12 +307,11 @@ PODS:
   - Onboard (2.3.3)
   - PromisesObjC (1.2.8)
   - Result (4.1.0)
-  - RLBAlertsPickers (1.1.2)
   - SkeletonView (1.8.7)
   - StatusAlert (1.1.1)
-  - SwiftMessages (7.0.1):
-    - SwiftMessages/App (= 7.0.1)
-  - SwiftMessages/App (7.0.1)
+  - SwiftMessages (8.0.2):
+    - SwiftMessages/App (= 8.0.2)
+  - SwiftMessages/App (8.0.2)
   - SwiftRater (1.8.0)
   - SwiftReorder (7.2.0)
   - SwipeCellKit (2.7.1)
@@ -333,7 +332,6 @@ DEPENDENCIES:
   - MBProgressHUD (~> 1.2.0)
   - Moya (~> 13.0)
   - Onboard
-  - RLBAlertsPickers (~> 1.1.1)
   - SkeletonView
   - StatusAlert (~> 1.1.1)
   - SwiftMessages
@@ -378,7 +376,6 @@ SPEC REPOS:
     - Onboard
     - PromisesObjC
     - Result
-    - RLBAlertsPickers
     - SkeletonView
     - StatusAlert
     - SwiftMessages
@@ -422,15 +419,14 @@ SPEC CHECKSUMS:
   Onboard: 4d6e943e20bdd6bc229df967a347dd7514bc2a6f
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
-  RLBAlertsPickers: 2548943b0cb16620904cbd926a645362d1b43963
   SkeletonView: ba5370f41280b2f0a76918bb143c1294232bb4f4
   StatusAlert: a18ec3c33d36a06d4479c1f2b15ffac67aaf7ab1
-  SwiftMessages: b577dc7043be8b299857ab35bb663dbff6483bd0
+  SwiftMessages: 633304165351b8e3dcbb81a71f8efcd86f9c1669
   SwiftRater: 6094fa6e9b3866ff8beca0a871b4b5f9ab896a6d
   SwiftReorder: d687883abf5f2327268e006b038025a6fc515e34
   SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
   UIImageColors: d2ef3b0877d203cbb06489eeb78ea8b7788caabe
 
-PODFILE CHECKSUM: 187ddc43872c2c7f156416288c974bda6e08293b
+PODFILE CHECKSUM: 1e2a2420fc002f803ae5cf5a787c329025cbb59a
 
 COCOAPODS: 1.9.3

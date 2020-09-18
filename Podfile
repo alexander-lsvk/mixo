@@ -12,9 +12,8 @@ target 'Mixo' do
   pod 'SwipeCellKit'
   pod 'SwiftMessages'
   pod 'MBProgressHUD', '~> 1.2.0'
-  pod 'RLBAlertsPickers', '~> 1.1.1'
   pod 'SwiftReorder', '~> 7.2'
-  pod "SkeletonView"
+  pod 'SkeletonView'
   pod 'Firebase/Analytics'
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
@@ -25,7 +24,7 @@ target 'Mixo' do
   pod 'FBSDKCoreKit/Swift'
   pod 'FBSDKLoginKit/Swift'
   pod 'FBSDKShareKit/Swift'
-  pod "SwiftRater"
+  pod 'SwiftRater'
 
   target 'MixoTests' do
     inherit! :search_paths

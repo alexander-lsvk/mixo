@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RLBAlertsPickers
 import SwiftMessages
 
 final class MixesViewController: BaseViewController<MixesPresenter> {

@@ -14,7 +14,6 @@ ${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework
 ${BUILT_PRODUCTS_DIR}/Moya/Moya.framework
 ${BUILT_PRODUCTS_DIR}/Onboard/Onboard.framework
 ${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework
-${BUILT_PRODUCTS_DIR}/RLBAlertsPickers/RLBAlertsPickers.framework
 ${BUILT_PRODUCTS_DIR}/Result/Result.framework
 ${BUILT_PRODUCTS_DIR}/SkeletonView/SkeletonView.framework
 ${BUILT_PRODUCTS_DIR}/StatusAlert/StatusAlert.framework

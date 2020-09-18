@@ -123,7 +123,7 @@ extension MixDetailsPresenter {
                 return
             }
 
-            self?.audioPreviewService.play(url: url) { status in
+            self?.audioPreviewService.play(url: url, trackId: id) { status in
                 var mixDetailViewModels = self?.mixDetailViewModels
                 guard let self = self, let index = mixDetailViewModels?.firstIndex(where: { $0.trackId == id }) else {
                     return

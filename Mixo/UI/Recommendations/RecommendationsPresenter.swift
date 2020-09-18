@@ -28,6 +28,7 @@ final class RecommendationsPresenter: Presenter {
     
     private let currentTrack: TrackConvertible
     private var currentTrackFeatures: AudioFeatures?
+    private var currentTrackViewModel: RecommendationViewModel?
     
     private var recommendations = [Track]()
     private var recommendationsAudioFeatures = [AudioFeatures]()
@@ -37,24 +38,25 @@ final class RecommendationsPresenter: Presenter {
     
     private let dispatchGroup = DispatchGroup()
 
-    private var playingTrackId: String?
-
     private let showBackToSearchButton: Bool
 
     private let mixesService: MixesService
     private let eventsService: EventsService
     private let networkService: NetworkService
+    private let audioPreviewService: AudioPreviewService
     
     init(currentTrack: TrackConvertible,
          showBackToSearchButton: Bool = false,
          eventsService: EventsService = .default,
          networkService: NetworkService = ProductionNetworkService(),
-         mixesService: MixesService = AnonymousMixesService.shared) {
+         mixesService: MixesService = AnonymousMixesService.shared,
+         audioPreviewService: AudioPreviewService = AudioPreviewService.shared) {
         self.currentTrack = currentTrack
         self.showBackToSearchButton = showBackToSearchButton
         self.eventsService = eventsService
         self.networkService = networkService
         self.mixesService = mixesService
+        self.audioPreviewService = audioPreviewService
     }
     
     func didBindController() {
@@ -71,6 +73,19 @@ final class RecommendationsPresenter: Presenter {
             }
         })
         loadCurrentTrackFeatures(id: currentTrack.id)
+    }
+
+    func viewWillAppear() {
+        // Check if we still need to show a track as playing
+        let commonViewModels = recommendationsViewModels + [currentTrackViewModel]
+        guard commonViewModels.first(where: { audioPreviewService.trackId == $0?.trackId }) == nil else {
+            return
+        }
+        recommendationsViewModels.forEach {
+            $0.updateIsPlayingHandler?(false)
+            $0.isPlaying = false
+        }
+        currentTrackViewModel?.updateIsPlayingHandler?(false)
     }
 }
 
@@ -150,7 +165,7 @@ extension RecommendationsPresenter {
                                                                               tempo: tempo,
                                                                               isMostHarmonic: self.isMostHarmonic(key),
                                                                               didSelectHandler: { [weak self] viewModel in
-                                                                                  self?.didSelectTrackHandler(viewModel: viewModel, track: track)
+                                                                                  self?.didSelectTrackHandler(track: track)
                                                                               })
                         recommendationViewModel.addToMixHandler = { [weak self] in self?.addRecommendationToMix(recommendationViewModel) }
                         recommendationViewModel.backToSearchHandler = { [weak self] in self?.recommendationsViewHandler?.popToRootViewController() }
@@ -216,35 +231,41 @@ extension RecommendationsPresenter {
                                                               tempo: currentTrackFeatures?.tempo ?? 0,
                                                               isMostHarmonic: isMostHarmonic(key),
                                                               didSelectHandler: { [weak self] viewModel in
-                                                                  self?.didSelectTrackHandler(viewModel: viewModel, track: self?.currentTrack)
+                                                                  self?.didSelectTrackHandler(track: self?.currentTrack)
                                                               })
         recommendationViewModel.backToSearchHandler = { [weak self] in self?.recommendationsViewHandler?.popToRootViewController() }
         recommendationViewModel.addToMixHandler = { [weak self] in self?.addSeedTrackToMix(recommendationViewModel) }
 
+        currentTrackViewModel = recommendationViewModel
+
         recommendationsViewHandler?.setCurrentTrackViewModel(recommendationViewModel)
     }
 
-    private func didSelectTrackHandler(viewModel: TrackViewModel, track: TrackConvertible?) {
-        if let track = track as? Track {
-            eventsService.post(eventType: PlayerEvent.didStartPlayTrack, value: track)
-            // If the same track was selected then just set false to all playing statuses
-
-            if let playingTrack = recommendationsViewModels.first(where: { $0.isPlaying }) {
-                if playingTrack.trackId == track.id {
-                    recommendationsViewModels.forEach { $0.updateIsPlayingHandler?(false) }
-                } else {
-                    recommendationsViewModels.forEach { $0.updateIsPlayingHandler?(false) }
-                    recommendationsViewModels.forEach { $0.isPlaying = false }
-                    recommendationsViewModels.first(where: { $0.trackId == track.id})?.updateIsPlayingHandler?(true)
-                    recommendationsViewModels.first(where: { $0.trackId == track.id})?.isPlaying = true
-                }
-            } else {
-                recommendationsViewModels.forEach { $0.updateIsPlayingHandler?(false) }
-                recommendationsViewModels.forEach { $0.isPlaying = false }
-                recommendationsViewModels.first(where: { $0.trackId == track.id})?.updateIsPlayingHandler?(true)
-                recommendationsViewModels.first(where: { $0.trackId == track.id})?.isPlaying = true
-            }
+    private func didSelectTrackHandler(track: TrackConvertible?) {
+        guard let track = track as? Track else {
+            return
         }
+        eventsService.post(eventType: PlayerEvent.didStartPlayTrack, value: track)
+
+        if track.id == currentTrack.id {
+            recommendationsViewModels.forEach {
+                $0.updateIsPlayingHandler?(false)
+                $0.isPlaying = false
+            }
+            return
+        }
+
+        guard let viewModel = recommendationsViewModels.first(where: { $0.trackId == track.id }), !viewModel.isPlaying else {
+            return
+        }
+
+        recommendationsViewModels.forEach {
+            $0.updateIsPlayingHandler?(false)
+            $0.isPlaying = false
+        }
+        currentTrackViewModel?.updateIsPlayingHandler?(false)
+        viewModel.updateIsPlayingHandler?(true)
+        viewModel.isPlaying = true
     }
 
     private func addRecommendationToMix(_ recommendationViewModel: RecommendationViewModel) {

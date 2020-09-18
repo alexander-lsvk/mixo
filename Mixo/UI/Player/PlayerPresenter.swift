@@ -61,10 +61,6 @@ final class PlayerPresenter: Presenter {
 // MARK: - Private functions
 extension PlayerPresenter {
     private func didTapPlayButton(_ trackId: String?) {
-        playAudioPreview(trackId)
-    }
-
-    private func playAudioPreview(_ trackId: String?) {
         audioPreviewService.status = .stopped
         playingTrack.status = .stopped
         // If the same track is selected reset the player
@@ -80,7 +76,32 @@ extension PlayerPresenter {
             guard let url = url else {
                 return
             }
-            self?.audioPreviewService.play(url: url) { status in
+            self?.audioPreviewService.play(url: url, trackId: trackId) { status in
+                switch status {
+                case .playing:  print("Player play")
+                case .stopped:  print("Player stop")
+                }
+            }
+        }
+    }
+
+    private func playAudioPreview(_ trackId: String?) {
+        audioPreviewService.status = .stopped
+        playingTrack.status = .stopped
+        // If the same track is selected reset the player
+        guard let trackId = trackId else {
+            playingTrack.id = nil
+            return
+        }
+
+        playingTrack.id = trackId
+        playingTrack.status = .playing
+
+        getAudioPreviewUrl(for: trackId) { [weak self] url in
+            guard let url = url else {
+                return
+            }
+            self?.audioPreviewService.play(url: url, trackId: trackId) { status in
                 switch status {
                 case .playing:  print("Player play")
                 case .stopped:  print("Player stop")

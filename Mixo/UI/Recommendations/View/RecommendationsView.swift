@@ -92,6 +92,10 @@ final class RecommendationsView: UIView, XibLoadable {
         playHandler = localPlayHandler
         addToMixHandler = viewModel.addToMixHandler
         backToSearchHandler = viewModel.backToSearchHandler
+
+        viewModel.updateIsPlayingHandler = { [weak self] isPlaying in
+            self?.playButton.isSelected = viewModel.isPlaying
+        }
     }
 
     func setRecommendationViewModels(_ viewModels: [RecommendationViewModel]?, animated: Bool) {
@@ -220,6 +224,10 @@ extension RecommendationsView {
     }
 
     private func play() {
+        if playButton.isSelected {
+            playHandler?()
+            return
+        }
         playButton.isSelected = !playButton.isSelected
         playHandler?()
     }

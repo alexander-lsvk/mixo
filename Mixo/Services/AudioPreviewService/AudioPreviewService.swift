@@ -19,20 +19,21 @@ var playingObserver: NSKeyValueObservation?
 final class AudioPreviewService {
     static let shared = AudioPreviewService()
 
-    var player: AVPlayer?
+    var trackId: String?
+
+    private var player: AVPlayer?
     var status: AudioPreviewStatus = .stopped {
         didSet {
             switch status {
-            case .stopped:
-                stop()
-                print("Stop")
-            case .playing:
-                print("Playing")
+            case .stopped:  stop()
+            case .playing:  break
             }
         }
     }
 
-    func play(url: URL, statusCallback: @escaping (AudioPreviewStatus) -> Void) {
+    func play(url: URL, trackId: String, statusCallback: @escaping (AudioPreviewStatus) -> Void) {
+        self.trackId = trackId
+
         player = AVPlayer(url: url)
 
         playingObserver = player?.observe(\.timeControlStatus, options:  [.new, .old], changeHandler: { player, change in
@@ -53,7 +54,6 @@ final class AudioPreviewService {
             @unknown default:
                 break
             }
-
         })
 
         player?.play()
