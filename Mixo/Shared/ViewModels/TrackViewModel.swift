@@ -23,10 +23,11 @@ protocol TrackViewModel {
     var tempo: Float            { get }
     var isMostHarmonic: Bool    { get }
     var place: TrackPlace       { get }
+
+    var isPlaying: Bool         { get set }
+    var updateIsPlayingHandler: ((_ isPlaying: Bool) -> Void)? { get set }
     
     var addToMixHandler: (() -> Void)?                  { get set }
     var showRecommendationsHandler: (() -> Void)?       { get set }
     var didSelectHandler: ((TrackViewModel) -> Void)    { get set }
-    
-    var isPlaying: Bool { get set }
 }

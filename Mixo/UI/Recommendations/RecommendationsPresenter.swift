@@ -145,7 +145,7 @@ extension RecommendationsPresenter {
                         let key = Key(rawChord: trackFeatures.key, rawMode: trackFeatures.mode)
                         let tempo = trackFeatures.tempo
 
-                        var recommendationViewModel = RecommendationViewModel(with: track,
+                        let recommendationViewModel = RecommendationViewModel(with: track,
                                                                               key: key,
                                                                               tempo: tempo,
                                                                               isMostHarmonic: self.isMostHarmonic(key),
@@ -208,18 +208,16 @@ extension RecommendationsPresenter {
         harmonicKeys = camelot.harmonicKeys
     }
 
-    private func setCurrentTrackViewModel(isPlaying: Bool = false) {
+    private func setCurrentTrackViewModel() {
         let key = Key(chord: Chord(rawValue: self.currentTrackFeatures!.key)!, mode: Mode(rawValue: self.currentTrackFeatures!.mode)!)
 
-        var recommendationViewModel = RecommendationViewModel(with: self.currentTrack,
+        let recommendationViewModel = RecommendationViewModel(with: self.currentTrack,
                                                               key: key,
                                                               tempo: currentTrackFeatures?.tempo ?? 0,
                                                               isMostHarmonic: isMostHarmonic(key),
                                                               didSelectHandler: { [weak self] viewModel in
                                                                   self?.didSelectTrackHandler(viewModel: viewModel, track: self?.currentTrack)
                                                               })
-
-        recommendationViewModel.isPlaying = isPlaying
         recommendationViewModel.backToSearchHandler = { [weak self] in self?.recommendationsViewHandler?.popToRootViewController() }
         recommendationViewModel.addToMixHandler = { [weak self] in self?.addSeedTrackToMix(recommendationViewModel) }
 
@@ -229,6 +227,23 @@ extension RecommendationsPresenter {
     private func didSelectTrackHandler(viewModel: TrackViewModel, track: TrackConvertible?) {
         if let track = track as? Track {
             eventsService.post(eventType: PlayerEvent.didStartPlayTrack, value: track)
+            // If the same track was selected then just set false to all playing statuses
+
+            if let playingTrack = recommendationsViewModels.first(where: { $0.isPlaying }) {
+                if playingTrack.trackId == track.id {
+                    recommendationsViewModels.forEach { $0.updateIsPlayingHandler?(false) }
+                } else {
+                    recommendationsViewModels.forEach { $0.updateIsPlayingHandler?(false) }
+                    recommendationsViewModels.forEach { $0.isPlaying = false }
+                    recommendationsViewModels.first(where: { $0.trackId == track.id})?.updateIsPlayingHandler?(true)
+                    recommendationsViewModels.first(where: { $0.trackId == track.id})?.isPlaying = true
+                }
+            } else {
+                recommendationsViewModels.forEach { $0.updateIsPlayingHandler?(false) }
+                recommendationsViewModels.forEach { $0.isPlaying = false }
+                recommendationsViewModels.first(where: { $0.trackId == track.id})?.updateIsPlayingHandler?(true)
+                recommendationsViewModels.first(where: { $0.trackId == track.id})?.isPlaying = true
+            }
         }
     }
 

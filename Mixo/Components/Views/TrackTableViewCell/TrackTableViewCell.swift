@@ -37,7 +37,7 @@ final class TrackTableViewCell: SwipeTableViewCell, XibLoadable, Reusable {
     }
 
     func update(with viewModel: TrackViewModel?) {
-        guard let viewModel = viewModel else {
+        guard var viewModel = viewModel else {
             return
         }
         hideSkeletonLoading()
@@ -62,6 +62,10 @@ final class TrackTableViewCell: SwipeTableViewCell, XibLoadable, Reusable {
         showRecommendationsHandler = viewModel.showRecommendationsHandler
 
         setPlayingStatus(viewModel.isPlaying)
+
+        viewModel.updateIsPlayingHandler = { [weak self] isPlaying in
+            self?.setPlayingStatus(isPlaying)
+        }
     }
 
     override func prepareForReuse() {
@@ -98,16 +102,24 @@ extension TrackTableViewCell {
                 self.blurView.effect = UIBlurEffect(style: UIBlurEffect.Style.regular)
             }
         } else {
-            UIView.animate(withDuration: 0.3, animations: {
+            guard blurView.effect != nil else {
+                hidePlayingIndicators()
+                return
+            }
+
+            UIView.animate(withDuration: 0.2, animations: {
                 self.blurView.effect = nil
             }, completion: { _ in
                 self.blurView.isHidden = true
+                self.hidePlayingIndicators()
             })
-
-            audioIndicatorView.isHidden = true
-            indicatorBarsView?.stop()
-            indicatorBarsView?.removeFromSuperview()
-            indicatorBarsView = nil
         }
+    }
+
+    private func hidePlayingIndicators() {
+        audioIndicatorView.isHidden = true
+        indicatorBarsView?.stop()
+        indicatorBarsView?.removeFromSuperview()
+        indicatorBarsView = nil
     }
 }

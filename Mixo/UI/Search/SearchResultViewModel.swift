@@ -17,13 +17,18 @@ struct SearchResultViewModel: TrackViewModel {
     let tempo: Float
     let place: TrackPlace = .search
     let isMostHarmonic = false
+
     var isPlaying = false
+    var updateIsPlayingHandler: ((Bool) -> Void)?
 
     var didSelectHandler: ((TrackViewModel) -> Void)
     var addToMixHandler: (() -> Void)?
     var showRecommendationsHandler: (() -> Void)?
     
-    init(with track: Track, key: Key? = nil, tempo: Float? = nil, didSelectHandler: @escaping ((TrackViewModel) -> Void)) {
+    init(with track: Track,
+         key: Key? = nil,
+         tempo: Float? = nil,
+         didSelectHandler: @escaping ((TrackViewModel) -> Void)) {
         self.trackId = track.id
         
         if track.artists.count > 3 {

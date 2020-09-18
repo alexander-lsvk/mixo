@@ -24,8 +24,11 @@ struct MixDetailViewModel: TrackViewModel {
     var addToMixHandler: (() -> Void)?
 
     var isPlaying = false
+    var updateIsPlayingHandler: ((Bool) -> Void)?
 
-    init(_ mixTrack: MixTrack, didRemoveItemHandler: @escaping (_ tracksCount: Int) -> Void, didSelectHandler: @escaping (TrackViewModel) -> Void,
+    init(_ mixTrack: MixTrack,
+         didRemoveItemHandler: @escaping (_ tracksCount: Int) -> Void,
+         didSelectHandler: @escaping (TrackViewModel) -> Void,
         showRecommendationsHandler: @escaping () -> Void) {
         self.trackId = mixTrack.id
         self.artist = mixTrack.artists.map { $0.name }.joined(separator: ", ")

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct RecommendationViewModel: TrackViewModel {
+final class RecommendationViewModel: TrackViewModel {
     let trackId: String
     let artist: String
     let name: String
@@ -18,13 +18,14 @@ struct RecommendationViewModel: TrackViewModel {
     let isMostHarmonic: Bool
     let place: TrackPlace = .recommendations
 
+    var isPlaying = false
+    var updateIsPlayingHandler: (((_ isPlaying: Bool) -> Void))?
+
     var addToMixHandler: (() -> Void)?
     var backToSearchHandler: (() -> Void)?
     var showRecommendationsHandler: (() -> Void)?
 
     var didSelectHandler: ((TrackViewModel) -> Void)
-
-    var isPlaying = false
     
     init(with track: TrackConvertible,
          key: Key? = nil,
