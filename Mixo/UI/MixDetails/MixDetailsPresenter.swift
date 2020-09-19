@@ -94,7 +94,7 @@ extension MixDetailsPresenter {
         }
         eventsService.post(eventType: PlayerEvent.didStartPlayTrack, value: track)
 
-        guard var viewModel = mixDetailViewModels.first(where: { $0.trackId == track.id }), !viewModel.isPlaying else {
+        guard let viewModel = mixDetailViewModels.first(where: { $0.trackId == track.id }), !viewModel.isPlaying else {
             return
         }
 
