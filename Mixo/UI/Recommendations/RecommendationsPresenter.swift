@@ -75,14 +75,15 @@ final class RecommendationsPresenter: Presenter {
     func viewWillAppear() {
         // Check if we still need to show a track as playing
         let commonViewModels = recommendationsViewModels + [currentTrackViewModel]
-        guard commonViewModels.first(where: { audioPreviewService.trackId == $0?.trackId }) == nil else {
-            return
+        if let track = commonViewModels.first(where: { audioPreviewService.trackId == $0?.trackId }) {
+            if track?.isPlaying ?? false {
+                return
+            } else {
+                stopAllTracks(withCurrent: true)
+            }
+        } else {
+            stopAllTracks(withCurrent: true)
         }
-        recommendationsViewModels.forEach {
-            $0.updateIsPlayingHandler?(false)
-            $0.isPlaying = false
-        }
-        currentTrackViewModel?.updateIsPlayingHandler?(false)
     }
 }
 
@@ -250,10 +251,7 @@ extension RecommendationsPresenter {
         eventsService.post(eventType: PlayerEvent.didStartPlayTrack, value: mixTrack)
 
         if track.id == currentTrack.id {
-            recommendationsViewModels.forEach {
-                $0.updateIsPlayingHandler?(false)
-                $0.isPlaying = false
-            }
+            stopAllTracks()
             return
         }
 
@@ -261,11 +259,7 @@ extension RecommendationsPresenter {
             return
         }
 
-        recommendationsViewModels.forEach {
-            $0.updateIsPlayingHandler?(false)
-            $0.isPlaying = false
-        }
-        currentTrackViewModel?.updateIsPlayingHandler?(false)
+        stopAllTracks(withCurrent: true)
         viewModel.updateIsPlayingHandler?(true)
         viewModel.isPlaying = true
     }
@@ -278,7 +272,6 @@ extension RecommendationsPresenter {
         let mixTrack = MixTrack(with: track, and: audioFeatures)
         recommendationsViewHandler?.showMixesViewController(MixesPresenter(displayMode: .add(track: mixTrack,
                                                                                              completionHandler: { [weak self] in
-                                                                                                self?.updateLastAction()
                                                                                                 self?.recommendationsViewHandler?.showAddedToMix()
                                                                                                 SwiftRater.check()
                                                                                              })))
@@ -304,14 +297,13 @@ extension RecommendationsPresenter {
         recommendationsViewHandler?.presentRecommendationsViewController(recommendationsPresenter)
     }
 
-    private func updateLastAction() {
-        let firestore = Firestore.firestore()
-        firestore.collection("users").whereField("id", isEqualTo: Auth.auth().currentUser?.uid as Any).getDocuments() { querySnapshot, error in
-            guard let userDocumentId = querySnapshot?.documents.first?.documentID else {
-                return
-            }
-            let userReference = firestore.collection("users").document(userDocumentId)
-            userReference.updateData(["lastAction": Timestamp(date: Date())])
+    private func stopAllTracks(withCurrent: Bool = false) {
+        recommendationsViewModels.forEach {
+            $0.updateIsPlayingHandler?(false)
+            $0.isPlaying = false
+        }
+        if withCurrent {
+            currentTrackViewModel?.updateIsPlayingHandler?(false)
         }
     }
 }

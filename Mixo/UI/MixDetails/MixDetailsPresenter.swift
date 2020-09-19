@@ -49,6 +49,25 @@ final class MixDetailsPresenter: Presenter {
         baseViewHandler?.setTitle(mix.name)
         setViewModel()
     }
+
+    func viewWillAppear() {
+        // Check if we still need to show a track as playing
+        if let track = mixDetailViewModels.first(where: { audioPreviewService.trackId == $0.trackId }) {
+            if track.isPlaying {
+                return
+            } else {
+                mixDetailViewModels.forEach {
+                    $0.updateIsPlayingHandler?(false)
+                    $0.isPlaying = false
+                }
+            }
+        } else {
+            mixDetailViewModels.forEach {
+                $0.updateIsPlayingHandler?(false)
+                $0.isPlaying = false
+            }
+        }
+    }
 }
 
 // MARK: - Private methods
