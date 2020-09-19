@@ -9,13 +9,15 @@
 import Foundation
 
 enum PlayerEvent {
-    static let didStartPlayTrack = Event<Track>()
+    static let didStartPlayTrack = Event<MixTrack>()
     static let didStopPlayTrack = Event<Void>()
 }
 
 struct PlayerViewHandler {
     let setViewModel: (_ viewModel: PlayerViewModel) -> Void
     let updatePlayButton: (_ isPlaying: Bool) -> Void
+    let showMixesViewController: (_ presenter: MixesPresenter) -> Void
+    let showAddedToMix: () -> Void
 }
 
 final class PlayerPresenter: Presenter {
@@ -28,13 +30,16 @@ final class PlayerPresenter: Presenter {
         }
     }
 
+    private let mixesService: MixesService
     private let eventsService: EventsService
     private let networkService: NetworkService
     private let audioPreviewService: AudioPreviewService
 
-    init(eventsService: EventsService = .default,
+    init(mixesService: MixesService = AnonymousMixesService.shared,
+         eventsService: EventsService = .default,
          networkService: NetworkService = ProductionNetworkService(),
          audioPreviewService: AudioPreviewService = AudioPreviewService.shared) {
+        self.mixesService = mixesService
         self.eventsService = eventsService
         self.networkService = networkService
         self.audioPreviewService = audioPreviewService
@@ -49,9 +54,8 @@ final class PlayerPresenter: Presenter {
             let playerViewModel = PlayerViewModel(artist: track.artists.map { $0.name }.joined(separator: ", "),
                                                   name: track.name,
                                                   imageUrl: track.album.images.first?.url,
-                                                  didTapPlayButtonHandler: { [weak self] in
-                                                      self?.didTapPlayButton(track.id)
-                                                  })
+                                                  didTapPlayButtonHandler: { [weak self] in self?.didTapPlayButton(track.id) },
+                                                  didTapAddToMixButtonHandler: { [weak self] in self?.addTrackToMix(track: track) })
             self.playerViewHandler?.setViewModel(playerViewModel)
             self.playAudioPreview(track.id)
         }
@@ -76,13 +80,24 @@ extension PlayerPresenter {
             guard let url = url else {
                 return
             }
-            self?.audioPreviewService.play(url: url, trackId: trackId) { status in
+            self?.audioPreviewService.play(url: url, trackId: trackId) { [weak self] status in
+                guard let self = self else {
+                    return
+                }
                 switch status {
                 case .playing:  print("Player play")
-                case .stopped:  print("Player stop")
+                case .stopped:
+                    self.didTapPlayButton(self.playingTrack.id)
                 }
             }
         }
+    }
+
+    private func addTrackToMix(track: MixTrack) {
+        playerViewHandler?.showMixesViewController(MixesPresenter(displayMode: .add(track: track,
+                                                                                    completionHandler: { [weak self] in
+                                                                                        self?.playerViewHandler?.showAddedToMix()
+                                                                                    })))
     }
 
     private func playAudioPreview(_ trackId: String?) {
@@ -101,10 +116,13 @@ extension PlayerPresenter {
             guard let url = url else {
                 return
             }
-            self?.audioPreviewService.play(url: url, trackId: trackId) { status in
+            self?.audioPreviewService.play(url: url, trackId: trackId) { [weak self] status in
+                guard let self = self else {
+                    return
+                }
                 switch status {
                 case .playing:  print("Player play")
-                case .stopped:  print("Player stop")
+                case .stopped:  self.didTapPlayButton(self.playingTrack.id)
                 }
             }
         }

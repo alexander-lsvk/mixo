@@ -62,10 +62,6 @@ final class SearchPresenter: Presenter {
         searchViewHandler?.becomeFirstResponder()
     }
 
-    func appReady() {
-        fetchPopularSearches()
-    }
-
     func prepareMixesPresenter() {
         let mixesPresenter = MixesPresenter(displayMode: .default)
         searchViewHandler?.presentMixesViewController(mixesPresenter)
@@ -74,24 +70,6 @@ final class SearchPresenter: Presenter {
 
 // MARK: - Private methods
 extension SearchPresenter {
-    private func fetchPopularSearches() {
-        searchViewHandler?.setViewModels(nil)
-
-        Firestore.firestore().collection("popularSearches").getDocuments { querySnapshot, error in
-            guard let documents = querySnapshot?.documents else {
-                return
-            }
-            var popularSearches = [Track]()
-            for document in documents {
-                let track = try! FirestoreDecoder().decode(Track.self, from: document.data())
-                popularSearches.append(track)
-            }
-            if !popularSearches.isEmpty {
-                self.loadFoundTracksFeatures(ids: popularSearches.map { $0.id }, tracks: popularSearches)
-            }
-        }
-    }
-
     private func performSearch(with query: String) {
         baseViewHandler?.hideStatus(true)
 

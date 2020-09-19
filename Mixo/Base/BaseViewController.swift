@@ -10,6 +10,10 @@ import Foundation
 
 class BaseViewController<P: Presenter>: UIViewController, StatusController, MessageController {
     public var presenter: P
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     public init(presenter: P) {
         self.presenter = presenter

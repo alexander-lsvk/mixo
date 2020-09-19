@@ -11,15 +11,13 @@ import Kingfisher
 import SwiftMessages
 import StatusAlert
 
-class SearchViewController: BaseViewController<SearchPresenter> {
+final class SearchViewController: BaseViewController<SearchPresenter> {
     private let searchView = SearchView.loadViewFromXib()
-
-    private var mixesItem: UIBarButtonItem?
 
     override func loadView() {
         view = searchView
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupNavigationBar()
@@ -34,8 +32,6 @@ class SearchViewController: BaseViewController<SearchPresenter> {
 
         }, presentRecommendationsViewController: { [weak self] recommendationsPresenter in
             let recommendationsViewController = RecommendationsViewController(presenter: recommendationsPresenter)
-            recommendationsViewController.navigationItem.rightBarButtonItem = self?.mixesItem
-
             self?.navigationController?.pushViewController(recommendationsViewController, animated: true)
 
         }, presentMixesViewController: { [weak self] mixesPresenter in
@@ -69,9 +65,6 @@ extension SearchViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
-
-        mixesItem = UIBarButtonItem(title:"🎛️", style: .plain, target: self, action: #selector(presentMixes))
-        navigationItem.rightBarButtonItem = mixesItem
 
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }

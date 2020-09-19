@@ -40,7 +40,6 @@ final class RecommendationsPresenter: Presenter {
 
     private let showBackToSearchButton: Bool
 
-    private let mixesService: MixesService
     private let eventsService: EventsService
     private let networkService: NetworkService
     private let audioPreviewService: AudioPreviewService
@@ -49,13 +48,11 @@ final class RecommendationsPresenter: Presenter {
          showBackToSearchButton: Bool = false,
          eventsService: EventsService = .default,
          networkService: NetworkService = ProductionNetworkService(),
-         mixesService: MixesService = AnonymousMixesService.shared,
          audioPreviewService: AudioPreviewService = AudioPreviewService.shared) {
         self.currentTrack = currentTrack
         self.showBackToSearchButton = showBackToSearchButton
         self.eventsService = eventsService
         self.networkService = networkService
-        self.mixesService = mixesService
         self.audioPreviewService = audioPreviewService
     }
     
@@ -242,10 +239,15 @@ extension RecommendationsPresenter {
     }
 
     private func didSelectTrackHandler(track: TrackConvertible?) {
-        guard let track = track as? Track else {
+        let commonAudioFeatures = recommendationsAudioFeatures + [currentTrackFeatures]
+
+        guard let track = track as? Track,
+              let audioFeatures = commonAudioFeatures.first(where: { $0?.id == track.id }) else {
             return
         }
-        eventsService.post(eventType: PlayerEvent.didStartPlayTrack, value: track)
+
+        let mixTrack = MixTrack(with: track, and: audioFeatures!)
+        eventsService.post(eventType: PlayerEvent.didStartPlayTrack, value: mixTrack)
 
         if track.id == currentTrack.id {
             recommendationsViewModels.forEach {
