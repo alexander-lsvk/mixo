@@ -10,8 +10,8 @@ import UIKit
 
 final class SearchBar: UIView, XibOwnerLoadable {
     var searchQueryHandler: ((_ query: String) -> Void)?
-
-    @IBOutlet var searchTextField: UITextField!
+    
+    @IBOutlet var searchBar: UISearchBar!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -19,13 +19,19 @@ final class SearchBar: UIView, XibOwnerLoadable {
     }
     
     override func awakeFromNib() {
-        searchTextField.addTarget(self, action: #selector(textFieldEditingDidChange), for: .editingChanged)
-        searchTextField.autocorrectionType = .no
+        searchBar.searchTextField.addTarget(self, action: #selector(textFieldEditingDidChange), for: .editingChanged)
+        searchBar.autocorrectionType = .no
+        searchBar.backgroundColor = .clear
+        searchBar.tintColor = .clear
+        searchBar.searchTextField.backgroundColor = .clear
+        searchBar.searchTextField.leftView = nil
+        searchBar.backgroundImage = UIImage()
+        searchBar.searchTextField.textAlignment = .left
     }
-
+    
     func becomeSearchFirstResponder() {
         DispatchQueue.main.async {
-            self.searchTextField.becomeFirstResponder()
+            self.searchBar.becomeFirstResponder()
         }
     }
 }
@@ -34,6 +40,6 @@ final class SearchBar: UIView, XibOwnerLoadable {
 extension SearchBar {
     @objc
     private func textFieldEditingDidChange(_ sender: Any) {
-        searchQueryHandler?(searchTextField.text ?? "")
+        searchQueryHandler?(searchBar.text ?? "")
     }
 }
