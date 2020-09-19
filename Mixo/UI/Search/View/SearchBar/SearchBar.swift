@@ -21,12 +21,12 @@ final class SearchBar: UIView, XibOwnerLoadable {
     override func awakeFromNib() {
         searchBar.searchTextField.addTarget(self, action: #selector(textFieldEditingDidChange), for: .editingChanged)
         searchBar.autocorrectionType = .no
-        searchBar.backgroundColor = .clear
-        searchBar.tintColor = .clear
         searchBar.searchTextField.backgroundColor = .clear
         searchBar.searchTextField.leftView = nil
         searchBar.backgroundImage = UIImage()
         searchBar.searchTextField.textAlignment = .left
+        searchBar.searchTextField.font = FontFamily.SFProRounded.regular.font(size: 15.0)
+        searchBar.searchTextField.textColor = UIColor(red: 35/255, green: 37/255, blue: 99/255, alpha: 1)
     }
     
     func becomeSearchFirstResponder() {

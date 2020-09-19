@@ -29,7 +29,7 @@
                             </constraints>
                         </imageView>
                         <searchBar contentMode="redraw" searchBarStyle="prominent" placeholder="Artist or track name..." translatesAutoresizingMaskIntoConstraints="NO" id="tqN-bT-5Zz">
-                            <rect key="frame" x="38" y="10" width="361" height="24"/>
+                            <rect key="frame" x="33" y="10" width="366" height="24"/>
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                     </subviews>
@@ -37,7 +37,7 @@
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="tqN-bT-5Zz" secondAttribute="trailing" constant="15" id="8qc-PJ-uky"/>
                         <constraint firstItem="tqN-bT-5Zz" firstAttribute="top" secondItem="tcC-Vh-nqS" secondAttribute="top" constant="10" id="9p3-Jd-WD8"/>
-                        <constraint firstItem="tqN-bT-5Zz" firstAttribute="leading" secondItem="zqT-Af-7HH" secondAttribute="trailing" constant="5" id="XJp-na-keH"/>
+                        <constraint firstItem="tqN-bT-5Zz" firstAttribute="leading" secondItem="zqT-Af-7HH" secondAttribute="trailing" id="XJp-na-keH"/>
                         <constraint firstItem="zqT-Af-7HH" firstAttribute="leading" secondItem="tcC-Vh-nqS" secondAttribute="leading" constant="15" id="l4l-Vy-mqx"/>
                         <constraint firstItem="zqT-Af-7HH" firstAttribute="centerY" secondItem="tcC-Vh-nqS" secondAttribute="centerY" id="r0a-Vq-gd5"/>
                         <constraint firstAttribute="bottom" secondItem="tqN-bT-5Zz" secondAttribute="bottom" constant="10" id="x84-qO-h3H"/>
