@@ -93,13 +93,12 @@ extension SearchPresenter {
     }
 
     private func performSearch(with query: String) {
-        baseViewHandler?.hideStatus(true)
-
         guard !query.isEmpty else {
             searchViewHandler?.setViewModels([])
             baseViewHandler?.showStatus(.empty(title: "No results", description: "Please check your query or search again"), true)
             return
         }
+        baseViewHandler?.hideStatus(true)
         searchViewHandler?.setViewModels(nil)
 
         networkService.requestDecodable(.search(query: query)) { (result: Result<SearchResponse, Error>) in
