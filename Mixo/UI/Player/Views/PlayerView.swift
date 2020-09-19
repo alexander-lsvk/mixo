@@ -16,8 +16,10 @@ final class PlayerView: UIView, XibLoadable {
     @IBOutlet private var playButton: UIButton!
 
     @IBAction private func didTapPlayButton() { didTapPlayButtonHandler?() }
+    @IBAction private func didTapAddToMixButton() { didTapAddToMixButtonHandler?() }
 
     private var didTapPlayButtonHandler: (() -> Void)?
+    private var didTapAddToMixButtonHandler: (() -> Void)?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,7 +32,9 @@ final class PlayerView: UIView, XibLoadable {
         artistLabel.text = viewModel.artist
         nameLabel.text = viewModel.name
         trackImageView.kf.setImage(with: viewModel.imageUrl)
+
         didTapPlayButtonHandler = viewModel.didTapPlayButtonHandler
+        didTapAddToMixButtonHandler = viewModel.didTapAddToMixButtonHandler
     }
 
     func updatePlayButton(isPlaying: Bool) {

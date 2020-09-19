@@ -24,15 +24,18 @@ final class MixesPresenter: Presenter {
 
     private let displayMode: MixesDisplayMode
 
-    private let networkService: NetworkService
     private let mixesService: MixesService
+    private let eventsService: EventsService
+    private let networkService: NetworkService
     
     init(displayMode: MixesDisplayMode,
-         networkService: NetworkService = ProductionNetworkService(),
-         mixesService: MixesService = AnonymousMixesService.shared) {
+         mixesService: MixesService = AnonymousMixesService.shared,
+         eventsService: EventsService = .default,
+         networkService: NetworkService = ProductionNetworkService()) {
         self.displayMode = displayMode
-        self.networkService = networkService
         self.mixesService = mixesService
+        self.eventsService = eventsService
+        self.networkService = networkService
     }
     
     func didBindController() {

@@ -14,4 +14,5 @@ struct PlayerViewModel {
     let imageUrl: URL?
 
     let didTapPlayButtonHandler: () -> Void
+    let didTapAddToMixButtonHandler: () -> Void
 }

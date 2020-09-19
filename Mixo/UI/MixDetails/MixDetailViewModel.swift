@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct MixDetailViewModel: TrackViewModel {
+final class MixDetailViewModel: TrackViewModel {
     let trackId: String
     let artist: String
     let name: String

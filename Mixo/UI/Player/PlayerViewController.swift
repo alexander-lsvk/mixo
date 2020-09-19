@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import SwiftMessages
+import StatusAlert
 
 final class PlayerViewController: BaseViewController<PlayerPresenter> {
     private let playerView = PlayerView.loadViewFromXib()
@@ -21,6 +23,24 @@ final class PlayerViewController: BaseViewController<PlayerPresenter> {
 
         }, updatePlayButton: { [weak self] isPlaying in
             self?.playerView.updatePlayButton(isPlaying: isPlaying)
+
+        }, showMixesViewController: { [weak self] presenter in
+            let mixesViewController = MixesViewController(presenter: presenter)
+            let swiftMessagesSegue = SwiftMessagesSegue(identifier: nil, source: self!, destination: mixesViewController)
+            swiftMessagesSegue.configure(layout: .bottomCard)
+            swiftMessagesSegue.perform()
+
+        }, showAddedToMix: {
+            let statusAlert = StatusAlert()
+            if #available(iOS 13.0, *) {
+                statusAlert.image = UIImage(systemName: "checkmark")
+            }
+            statusAlert.title = "Added to the mix"
+            statusAlert.appearance.blurStyle = .extraLight
+            statusAlert.alertShowingDuration = 1
+            statusAlert.canBePickedOrDismissed = true
+
+            statusAlert.showInKeyWindow()
         })
 
         super.viewDidLoad()

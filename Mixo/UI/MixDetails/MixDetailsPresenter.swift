@@ -27,6 +27,7 @@ final class MixDetailsPresenter: Presenter {
     private let didUpdateTracks: () -> Void
 
     private let mixesService: MixesService
+    private let eventsService: EventsService
     private let networkService: NetworkService
     private let audioPreviewService: AudioPreviewService
     
@@ -34,23 +35,19 @@ final class MixDetailsPresenter: Presenter {
          didUpdateTracks: @escaping () -> Void,
          networkService: NetworkService = ProductionNetworkService(),
          audioPreviewService: AudioPreviewService = AudioPreviewService.shared,
-         mixesService: MixesService = AnonymousMixesService.shared) {
+         mixesService: MixesService = AnonymousMixesService.shared,
+         eventsService: EventsService = EventsService.default) {
         self.mix = mix
         self.didUpdateTracks = didUpdateTracks
         self.mixesService = mixesService
         self.networkService = networkService
+        self.eventsService = eventsService
         self.audioPreviewService = audioPreviewService
     }
     
     func didBindController() {
         baseViewHandler?.setTitle(mix.name)
         setViewModel()
-    }
-
-    func viewWillDisappear() {
-        if let playingTrackId = playingTrackId {
-            playAudioPreview(for: playingTrackId)
-        }
     }
 }
 
@@ -62,7 +59,7 @@ extension MixDetailsPresenter {
                 self?.removeTrack(track!, tracksCount: tracksCount)
 
             }, didSelectHandler: { [weak self] viewModel in
-                self?.playAudioPreview(for: viewModel.trackId)
+                self?.didSelectTrackHandler(track: track)
 
             }, showRecommendationsHandler: { [weak self] in
                 guard let track = track else {
@@ -91,62 +88,29 @@ extension MixDetailsPresenter {
         })
     }
 
+    private func didSelectTrackHandler(track: MixTrack?) {
+        guard let track = track else {
+            return
+        }
+        eventsService.post(eventType: PlayerEvent.didStartPlayTrack, value: track)
+
+        guard var viewModel = mixDetailViewModels.first(where: { $0.trackId == track.id }), !viewModel.isPlaying else {
+            return
+        }
+
+        mixDetailViewModels.forEach {
+            $0.updateIsPlayingHandler?(false)
+            $0.isPlaying = false
+        }
+        viewModel.updateIsPlayingHandler?(true)
+        viewModel.isPlaying = true
+    }
+
     private func removeTrack(_ track: MixTrack, tracksCount: Int) {
         mixesService.removeFromMix(track: track, mixId: mix.id)
         if tracksCount == 1 {
             baseViewHandler?.showStatus(.empty(title: "No tracks", description: "Start adding tracks to your mix right from the recommendations"), true)
         }
         didUpdateTracks()
-    }
-
-    private func playAudioPreview(for id: String) {
-        audioPreviewService.status = .stopped
-
-         // If some track is playing
-        if playingTrackId != nil {
-            var mixDetailViewModels = self.mixDetailViewModels
-            guard let index = mixDetailViewModels.firstIndex(where: { $0.trackId == playingTrackId }) else {
-                return
-            }
-            mixDetailViewModels[index].isPlaying = false
-            mixDetailsViewHandler?.setViewModels(mixDetailViewModels)
-
-            if playingTrackId == id {
-                playingTrackId = nil
-                return
-            }
-        }
-
-        getAudioPreviewUrl(for: id) { [weak self] url in
-            guard let url = url else {
-                self?.baseViewHandler?.showMessage(.error, "Preview is unavailable for the selected track")
-                return
-            }
-
-            self?.audioPreviewService.play(url: url, trackId: id) { status in
-                var mixDetailViewModels = self?.mixDetailViewModels
-                guard let self = self, let index = mixDetailViewModels?.firstIndex(where: { $0.trackId == id }) else {
-                    return
-                }
-                switch status {
-                case .playing:
-                    self.playingTrackId = id
-                    mixDetailViewModels?[index].isPlaying = true
-                case .stopped:
-                    mixDetailViewModels?[index].isPlaying = false
-                    self.playingTrackId = nil
-                }
-                self.mixDetailsViewHandler?.setViewModels(mixDetailViewModels ?? [])
-            }
-        }
-    }
-
-    private func getAudioPreviewUrl(for id: String, completion: @escaping (_ url: URL?) -> Void) {
-        networkService.requestDecodable(.tracks(id: id)) { (result: Result<Track, Error>) in
-            switch result {
-            case .success(let response):    completion(response.previewUrl)
-            case .failure(let error):       self.baseViewHandler?.showMessage(.error, error.localizedDescription)
-            }
-        }
     }
 }
