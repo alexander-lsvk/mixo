@@ -13,6 +13,7 @@ import FirebaseFirestore
 import CodableFirebase
 
 struct SearchViewHandler {
+    let presentSpotifyLoginViewController: (_ presenter: SpotifyLoginPresenter) -> Void
     let setSearchBarHandler: (_ handler: @escaping (_ query: String) -> Void) -> Void
     let setViewModels: (_ viewModels: [SearchResultViewModel]?) -> Void
     let presentRecommendationsViewController: (_ presenter: RecommendationsPresenter) -> Void
@@ -28,6 +29,8 @@ final class SearchPresenter: Presenter {
     private var tracks: [Track]?
     private var audioFeatures = [AudioFeatures]()
 
+    static let spotifyLoginPresenter = SpotifyLoginPresenter()
+
     private let networkService: NetworkService
     private let authenticationService: AuthenticationService
 
@@ -38,13 +41,13 @@ final class SearchPresenter: Presenter {
     }
     
     func didBindController() {
-//        try! Auth.auth().signOut()
-//        authenticationService.removeAccountInfo()
-        
+        testLogoutFirebase(false)
+        testLogoutSpotify(false)
+
         searchViewHandler?.setViewModels([])
         searchViewHandler?.setSearchBarHandler( { [weak self] query in self?.performSearch(with: query) } )
 
-        baseViewHandler?.showStatus(.empty(title: "No results", description: "Please check your query or search again"), true)
+        // baseViewHandler?.showStatus(.empty(title: "No results", description: "Please check your query or search again"), true)
 
         if Auth.auth().currentUser == nil {
             Auth.auth().signInAnonymously() { authenticationResult, error in
@@ -59,7 +62,18 @@ final class SearchPresenter: Presenter {
             }
         }
 
-        searchViewHandler?.becomeFirstResponder()
+        SearchPresenter.spotifyLoginPresenter.completionHandler = { [weak self] in
+            self?.baseViewHandler?.hideStatus(true)
+        }
+
+        if !authenticationService.isLoggedIn {
+            searchViewHandler?.presentSpotifyLoginViewController(SearchPresenter.spotifyLoginPresenter)
+        } else if authenticationService.tokenNeedsRefresh {
+            baseViewHandler?.showStatus(.loading, true)
+            SearchPresenter.spotifyLoginPresenter.updateSession()
+        } else {
+            searchViewHandler?.becomeFirstResponder()
+        }
     }
 
     func prepareMixesPresenter() {
@@ -73,7 +87,7 @@ extension SearchPresenter {
     private func performSearch(with query: String) {
         guard !query.isEmpty else {
             searchViewHandler?.setViewModels([])
-            baseViewHandler?.showStatus(.empty(title: "No results", description: "Please check your query or search again"), true)
+            // baseViewHandler?.showStatus(.empty(title: "No results", description: "Please check your query or search again"), true)
             return
         }
         baseViewHandler?.hideStatus(true)
@@ -87,7 +101,7 @@ extension SearchPresenter {
 
                     if response.items.isEmpty {
                         self.searchViewHandler?.setViewModels([])
-                        self.baseViewHandler?.showStatus(.empty(title: "No results", description: "Please check your query or search again"), true)
+                        // self.baseViewHandler?.showStatus(.empty(title: "No results", description: "Please check your query or search again"), true)
                     } else {
                         self.baseViewHandler?.hideStatus(true)
                         self.loadFoundTracksFeatures(ids: response.items.map { $0.id }, tracks: response.items)
@@ -106,12 +120,13 @@ extension SearchPresenter {
                 switch result {
                 case .success(let response):
                     var searchResultViewModels = [SearchResultViewModel]()
-                    self.audioFeatures = response.audioFeatures
+                    self.audioFeatures = response.audioFeatures.compactMap({ $0 })
                     
                     for track in tracks {
-                        guard let trackFeatures = response.audioFeatures.first(where: { $0.id == track.id }) else {
-                            return
+                        guard let trackFeatures = self.audioFeatures.first(where: { $0.id == track.id }) else {
+                            continue
                         }
+
 
                         var searchResultViewModel = SearchResultViewModel(with: track,
                                                                           key: Key(rawChord: trackFeatures.key, rawMode: trackFeatures.mode),
@@ -178,6 +193,19 @@ extension SearchPresenter {
             }
             let userReference = firestore.collection("users").document(userDocumentId)
             userReference.updateData(["lastAction": Timestamp(date: Date())])
+        }
+    }
+
+    private func testLogoutFirebase(_ test: Bool) {
+        if test {
+            try! Auth.auth().signOut()
+            authenticationService.removeAccountInfo()
+        }
+    }
+
+    private func testLogoutSpotify(_ test: Bool) {
+        if test {
+            authenticationService.removeAccountInfo()
         }
     }
 }

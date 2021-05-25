@@ -9,7 +9,7 @@
 import Foundation
 
 struct AudioFeaturesResponse: Decodable {
-    let audioFeatures: [AudioFeatures]
+    let audioFeatures: [AudioFeatures?]
     
     enum CodingKeys: String, CodingKey {
         case audioFeatures = "audio_features"
@@ -17,6 +17,6 @@ struct AudioFeaturesResponse: Decodable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.audioFeatures = try container.decode([AudioFeatures].self, forKey: .audioFeatures)
+        self.audioFeatures = try container.decode([AudioFeatures?].self, forKey: .audioFeatures)
     }
 }

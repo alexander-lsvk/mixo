@@ -54,9 +54,7 @@ final class SpotifyLoginPresenter: NSObject, Presenter {
         })
     }
 
-    func updateSession(completionHandler: @escaping () -> Void) {
-        self.completionHandler = completionHandler
-
+    func updateSession() {
         sessionManager.session = authenticationService.spotifySession
         sessionManager.renewSession()
     }

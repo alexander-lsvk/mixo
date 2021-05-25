@@ -87,5 +87,6 @@ final class MixoAuthenticationService: AuthenticationService {
         MixoAuthenticationService.shared.tokenInfo = nil
 
         storageService.removeValue(for: MixoAuthenticationService.tokenInfoKey)
+        storageService.removeValue(for: MixoAuthenticationService.spotifySessionKey)
     }
 }

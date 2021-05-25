@@ -25,6 +25,8 @@ target 'Mixo' do
   pod 'FBSDKLoginKit/Swift'
   pod 'FBSDKShareKit/Swift'
   pod 'SwiftRater'
+  pod 'SnapKit', '~> 5.0.0'
+  pod 'SwiftyGif'
 
   target 'MixoTests' do
     inherit! :search_paths

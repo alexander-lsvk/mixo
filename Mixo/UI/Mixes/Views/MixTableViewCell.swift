@@ -19,6 +19,10 @@ final class MixTableViewCell: SwipeTableViewCell, XibLoadable, Reusable {
         showSkeletonLoading()
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
+
     func update(with viewModel: MixViewModel?) {
         guard let viewModel = viewModel else {
             return
@@ -38,6 +42,6 @@ extension MixTableViewCell {
     }
 
     private func showSkeletonLoading() {
-        showAnimatedGradientSkeleton()
+        showAnimatedGradientSkeleton(transition: .none)
     }
 }

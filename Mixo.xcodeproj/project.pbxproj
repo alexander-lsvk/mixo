@@ -40,6 +40,8 @@
 		959A4FD36071FAB40A6C9D5C /* Pods_MixoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60588C0CED19CCD418171F81 /* Pods_MixoUITests.framework */; };
 		B047252989D86615C15149B0 /* Pods_Mixo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1EFD063D2987E80DBC61B91 /* Pods_Mixo.framework */; };
 		BE00734A6D94F0693E97DF26 /* Pods_MixoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 677C59B13822EB8DBD6AA294 /* Pods_MixoTests.framework */; };
+		C156C33625C6C1AB00F5146A /* SubscriptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C156C33525C6C1AB00F5146A /* SubscriptionButton.swift */; };
+		C156C33C25C6CD2900F5146A /* giphy.gif in Resources */ = {isa = PBXBuildFile; fileRef = C156C33B25C6CD2900F5146A /* giphy.gif */; };
 		C161BC87250E0D350061CBB8 /* EventsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C161BC86250E0D350061CBB8 /* EventsService.swift */; };
 		C161BC89250E13690061CBB8 /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C161BC88250E13690061CBB8 /* PlayerViewModel.swift */; };
 		C17996FD250CFFFA0048FEEE /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17996FC250CFFFA0048FEEE /* MainTabViewController.swift */; };
@@ -52,6 +54,7 @@
 		C179970E250D47EE0048FEEE /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C179970D250D47EE0048FEEE /* PlayerView.swift */; };
 		C1799710250D47F70048FEEE /* PlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C179970F250D47F70048FEEE /* PlayerView.xib */; };
 		C1CC0EC125115B03009C41AE /* PlayingTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CC0EC025115B03009C41AE /* PlayingTrack.swift */; };
+		C1F3389C25B6220700157490 /* PlayerVisibilityDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F3389B25B6220700157490 /* PlayerVisibilityDelegate.swift */; };
 		CE23EF89250CF65C00AABC12 /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23EF87250CF65C00AABC12 /* TrackTableViewCell.swift */; };
 		CE23EF8A250CF65C00AABC12 /* TrackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE23EF88250CF65C00AABC12 /* TrackTableViewCell.xib */; };
 		CE23EF8D250CFA2C00AABC12 /* TrackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23EF8C250CFA2C00AABC12 /* TrackViewModel.swift */; };
@@ -179,6 +182,8 @@
 		60588C0CED19CCD418171F81 /* Pods_MixoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MixoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		677C59B13822EB8DBD6AA294 /* Pods_MixoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MixoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BCB8DE804DCD4C6CF94DA7D /* Pods-Mixo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mixo.debug.xcconfig"; path = "Target Support Files/Pods-Mixo/Pods-Mixo.debug.xcconfig"; sourceTree = "<group>"; };
+		C156C33525C6C1AB00F5146A /* SubscriptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionButton.swift; sourceTree = "<group>"; };
+		C156C33B25C6CD2900F5146A /* giphy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = giphy.gif; sourceTree = "<group>"; };
 		C161BC86250E0D350061CBB8 /* EventsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsService.swift; sourceTree = "<group>"; };
 		C161BC88250E13690061CBB8 /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
 		C17996FC250CFFFA0048FEEE /* MainTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
@@ -192,6 +197,7 @@
 		C179970F250D47F70048FEEE /* PlayerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerView.xib; sourceTree = "<group>"; };
 		C1CC0EC025115B03009C41AE /* PlayingTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingTrack.swift; sourceTree = "<group>"; };
 		C1EFD063D2987E80DBC61B91 /* Pods_Mixo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mixo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1F3389B25B6220700157490 /* PlayerVisibilityDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerVisibilityDelegate.swift; sourceTree = "<group>"; };
 		CE23EF87250CF65C00AABC12 /* TrackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
 		CE23EF88250CF65C00AABC12 /* TrackTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackTableViewCell.xib; sourceTree = "<group>"; };
 		CE23EF8C250CFA2C00AABC12 /* TrackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackViewModel.swift; sourceTree = "<group>"; };
@@ -407,6 +413,16 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		C156C33A25C6CD0500F5146A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E86F89B12291F34B00785FFF /* LaunchScreen.storyboard */,
+				E86F89AF2291F34B00785FFF /* Assets.xcassets */,
+				C156C33B25C6CD2900F5146A /* giphy.gif */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		C17996FB250CFD240048FEEE /* MainTab */ = {
 			isa = PBXGroup;
 			children = (
@@ -438,6 +454,7 @@
 		C1799708250D47B70048FEEE /* Player */ = {
 			isa = PBXGroup;
 			children = (
+				C1F3389A25B621EC00157490 /* VisibilityDelegate */,
 				C1799709250D47D30048FEEE /* PlayerPresenter.swift */,
 				C179970B250D47DD0048FEEE /* PlayerViewController.swift */,
 				C161BC88250E13690061CBB8 /* PlayerViewModel.swift */,
@@ -454,6 +471,14 @@
 				C179970F250D47F70048FEEE /* PlayerView.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		C1F3389A25B621EC00157490 /* VisibilityDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				C1F3389B25B6220700157490 /* PlayerVisibilityDelegate.swift */,
+			);
+			path = VisibilityDelegate;
 			sourceTree = "<group>";
 		};
 		CE23EF85250CF63000AABC12 /* Controllers */ = {
@@ -562,6 +587,7 @@
 			children = (
 				E85D526023218CF3005D0C91 /* SubscriptionView.swift */,
 				E85D526223218D01005D0C91 /* SubscriptionView.xib */,
+				C156C33525C6C1AB00F5146A /* SubscriptionButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -591,6 +617,7 @@
 		E86F89A72291F34A00785FFF /* Mixo */ = {
 			isa = PBXGroup;
 			children = (
+				C156C33A25C6CD0500F5146A /* Resources */,
 				117D557D2442F7D8008D858F /* Shared */,
 				E8A84AA822A2D81500212127 /* Application */,
 				E86F89FF2295F19200785FFF /* Base */,
@@ -600,11 +627,9 @@
 				E86F89F62295E85D00785FFF /* Responses */,
 				E86F89ED2295E57700785FFF /* Services */,
 				E86F89EC2295E4BB00785FFF /* UI */,
-				E86F89AF2291F34B00785FFF /* Assets.xcassets */,
-				E86F89B12291F34B00785FFF /* LaunchScreen.storyboard */,
+				E86F89D62291F44800785FFF /* Frameworks */,
 				E86F89B42291F34B00785FFF /* Info.plist */,
 				11E688192445AD84002C615A /* GoogleService-Info.plist */,
-				E86F89D62291F44800785FFF /* Frameworks */,
 				E86F89D92291F56900785FFF /* Mixo-Bridging-Header.h */,
 			);
 			path = Mixo;
@@ -946,6 +971,7 @@
 				E89F357023C67D8F004D6FAE /* SF-Pro-Rounded-Regular.otf in Resources */,
 				112E8F90245DD25C004285E9 /* SpotifyLoginView.xib in Resources */,
 				E89F356C23C67D8F004D6FAE /* SF-Pro-Rounded-Medium.otf in Resources */,
+				C156C33C25C6CD2900F5146A /* giphy.gif in Resources */,
 				E89F356E23C67D8F004D6FAE /* SF-Pro-Rounded-Bold.otf in Resources */,
 				1119DBD0244898A90094C9BC /* EmptyStatusView.xib in Resources */,
 				E86F89B32291F34B00785FFF /* LaunchScreen.storyboard in Resources */,
@@ -1097,6 +1123,7 @@
 				E8F6FE3D229D6E1C00FB1A5F /* Autolayout.swift in Sources */,
 				117D55842444FEC4008D858F /* RecommendationsSortView.swift in Sources */,
 				E84A2BB623C9F67C0005B2CE /* MixesPresenter.swift in Sources */,
+				C156C33625C6C1AB00F5146A /* SubscriptionButton.swift in Sources */,
 				E86F89F02295E59200785FFF /* NetworkService.swift in Sources */,
 				E84A2BAA23C9EF450005B2CE /* CALayer+Shadow.swift in Sources */,
 				1119DBCD2448989D0094C9BC /* EmptyStatusView.swift in Sources */,
@@ -1129,6 +1156,7 @@
 				C1799706250D329B0048FEEE /* AudioIndicatorBarsView.swift in Sources */,
 				E8AD094A2396D0DF00384302 /* AudioPreviewService.swift in Sources */,
 				C1CC0EC125115B03009C41AE /* PlayingTrack.swift in Sources */,
+				C1F3389C25B6220700157490 /* PlayerVisibilityDelegate.swift in Sources */,
 				E81E3E9C23CCF91B00D7E134 /* MixDetailsView.swift in Sources */,
 				11E6882824460A36002C615A /* SecuredStorageService.swift in Sources */,
 				11E68831244707E7002C615A /* EditMixInfoViewModel.swift in Sources */,
@@ -1323,8 +1351,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = RQ4NX29V75;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1336,14 +1365,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.Mixo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "mixo-development";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Mixo/Mixo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -1357,9 +1386,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = RQ4NX29V75;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1371,14 +1400,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"$(inherited)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.app.Mixo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "mixo-development";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Mixo/Mixo-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

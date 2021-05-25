@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="SF-Pro-Rounded-Medium.otf">
+            <string>SFProRounded-Medium</string>
+        </array>
         <array key="SF-Pro-Rounded-Semibold.otf">
             <string>SFProRounded-Semibold</string>
         </array>
@@ -38,16 +43,36 @@
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sCE-3v-TKd">
                                             <rect key="frame" x="0.0" y="67" width="414" height="220"/>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="220" id="pNO-kf-hFC"/>
                                             </constraints>
                                         </view>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="poh-zl-heP">
+                                            <rect key="frame" x="20" y="307" width="374" height="50"/>
+                                            <color key="backgroundColor" red="0.13725490200000001" green="0.1450980392" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="50" id="Xkp-Xd-aBo"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="SFProRounded-Medium" family="SF Pro Rounded" pointSize="17"/>
+                                            <state key="normal" title="Subscribe">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusValue">
+                                                    <real key="value" value="20"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="sCE-3v-TKd" secondAttribute="trailing" id="1i6-GF-WhA"/>
+                                        <constraint firstItem="poh-zl-heP" firstAttribute="top" secondItem="sCE-3v-TKd" secondAttribute="bottom" constant="20" id="3iv-8d-eEA"/>
+                                        <constraint firstAttribute="trailing" secondItem="poh-zl-heP" secondAttribute="trailing" constant="20" id="8ht-10-Grl"/>
                                         <constraint firstItem="KEC-9t-MMO" firstAttribute="top" secondItem="VAK-xD-OdY" secondAttribute="top" constant="20" id="ANI-i2-0Ws"/>
+                                        <constraint firstItem="poh-zl-heP" firstAttribute="leading" secondItem="VAK-xD-OdY" secondAttribute="leading" constant="20" id="Xzf-j0-Rv2"/>
                                         <constraint firstItem="sCE-3v-TKd" firstAttribute="leading" secondItem="VAK-xD-OdY" secondAttribute="leading" id="bNj-SQ-E2o"/>
                                         <constraint firstItem="sCE-3v-TKd" firstAttribute="top" secondItem="KEC-9t-MMO" secondAttribute="bottom" constant="20" id="eUB-w8-Qeo"/>
                                         <constraint firstItem="KEC-9t-MMO" firstAttribute="centerX" secondItem="VAK-xD-OdY" secondAttribute="centerX" id="gKH-zN-3NQ"/>
@@ -73,6 +98,7 @@
                     </constraints>
                 </view>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="bkb-HY-u90" secondAttribute="trailing" id="8Ac-Xz-xbg"/>
@@ -85,11 +111,15 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="bkb-HY-u90" secondAttribute="bottom" id="lV6-nA-ged"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="featuresView" destination="sCE-3v-TKd" id="X2O-d6-srK"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="145.98214285714286"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

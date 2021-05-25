@@ -16,10 +16,12 @@ ${BUILT_PRODUCTS_DIR}/Onboard/Onboard.framework
 ${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework
 ${BUILT_PRODUCTS_DIR}/Result/Result.framework
 ${BUILT_PRODUCTS_DIR}/SkeletonView/SkeletonView.framework
+${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework
 ${BUILT_PRODUCTS_DIR}/StatusAlert/StatusAlert.framework
 ${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework
 ${BUILT_PRODUCTS_DIR}/SwiftRater/SwiftRater.framework
 ${BUILT_PRODUCTS_DIR}/SwiftReorder/SwiftReorder.framework
+${BUILT_PRODUCTS_DIR}/SwiftyGif/SwiftyGif.framework
 ${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework
 ${BUILT_PRODUCTS_DIR}/UIImageColors/UIImageColors.framework
 ${BUILT_PRODUCTS_DIR}/abseil/absl.framework

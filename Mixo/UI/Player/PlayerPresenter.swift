@@ -24,6 +24,8 @@ final class PlayerPresenter: Presenter {
     var baseViewHandler: BaseViewHandler?
     var playerViewHandler: PlayerViewHandler?
 
+    weak var delegate: PlayerVisibilityDelegate?
+
     private var playingTrack = PlayingTrack(id: nil, status: .stopped) {
         didSet {
             playerViewHandler?.updatePlayButton(playingTrack.status.rawValue == 0)
@@ -51,6 +53,8 @@ final class PlayerPresenter: Presenter {
             guard let self = self else {
                 return
             }
+            self.delegate?.showPlayer(true)
+
             let playerViewModel = PlayerViewModel(artist: track.artists.map { $0.name }.joined(separator: ", "),
                                                   name: track.name,
                                                   imageUrl: track.album.images.first?.url,

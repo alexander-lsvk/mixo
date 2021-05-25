@@ -45,6 +45,9 @@ final class MixesPresenter: Presenter {
         }
 
         mixesViewHandler?.setViewModel(nil)
+    }
+
+    func viewWillAppear() {
         fetchMixes()
     }
 

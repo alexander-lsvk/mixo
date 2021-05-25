@@ -14,6 +14,15 @@ import StatusAlert
 final class SearchViewController: BaseViewController<SearchPresenter> {
     private let searchView = SearchView.loadViewFromXib()
 
+    private var spotifyLoginViewController: SpotifyLoginViewController?
+
+    override var onView: StatusViewContainer {
+        guard let tabBarView = tabBarController?.view else {
+            return view
+        }
+        return tabBarView
+    }
+
     override func loadView() {
         view = searchView
     }
@@ -24,7 +33,12 @@ final class SearchViewController: BaseViewController<SearchPresenter> {
     }
 
     override func viewDidLoad() {
-        presenter.searchViewHandler = SearchViewHandler(setSearchBarHandler: { [weak self] handler in
+        presenter.searchViewHandler = SearchViewHandler(presentSpotifyLoginViewController: { [weak self] spotifyLoginPresenter in
+            let spotifyLoginViewController = SpotifyLoginViewController(presenter: spotifyLoginPresenter)
+            self?.spotifyLoginViewController = spotifyLoginViewController
+            self?.present(spotifyLoginViewController, animated: true)
+
+        }, setSearchBarHandler: { [weak self] handler in
             self?.searchView.setSearchBarHandler(handler)
             
         }, setViewModels: { [weak self] viewModels in

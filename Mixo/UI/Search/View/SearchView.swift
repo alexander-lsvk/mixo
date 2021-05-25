@@ -77,6 +77,8 @@ extension SearchView {
         tableView.delegate = self
         tableView.dataSource = self
 
+        tableView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 60.0, right: 0.0)
+
         register(reusableCell: TrackTableViewCell.self)
     }
 

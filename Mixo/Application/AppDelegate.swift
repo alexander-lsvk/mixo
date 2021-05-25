@@ -16,7 +16,6 @@ final class AppDelegate: UIResponder {
     var window: UIWindow?
 
     private var mainTabPresenter: MainTabPresenter?
-    private var spotifyLoginPresenter = SpotifyLoginPresenter()
 }
 
 extension AppDelegate: UIApplicationDelegate {
@@ -27,8 +26,6 @@ extension AppDelegate: UIApplicationDelegate {
         SwiftRater.appLaunched()
 
         let mainTabPresenter = MainTabPresenter()
-        mainTabPresenter.spotifyLoginPresenter = spotifyLoginPresenter
-    
         self.mainTabPresenter = mainTabPresenter
 
         FirebaseApp.configure()
@@ -43,7 +40,7 @@ extension AppDelegate: UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        spotifyLoginPresenter.open(app, open: url, options: options)
+        SearchPresenter.spotifyLoginPresenter.open(app, open: url, options: options)
         ApplicationDelegate.shared.application(app, open: url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: options[UIApplication.OpenURLOptionsKey.annotation])
         return true
     }

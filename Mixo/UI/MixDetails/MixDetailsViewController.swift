@@ -28,22 +28,5 @@ final class MixDetailsViewController: BaseViewController<MixDetailsPresenter> {
         })
 
         super.viewDidLoad()
-
-        setupNavigationBarItem()
-    }
-}
-
-extension MixDetailsViewController {
-    private func setupNavigationBarItem() {
-        let dismissButton = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(dismissMixesViewController))
-
-        navigationItem.rightBarButtonItem = dismissButton
-
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-    }
-
-    @objc
-    private func dismissMixesViewController() {
-        self.dismiss(animated: true)
     }
 }

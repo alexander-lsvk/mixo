@@ -16,8 +16,10 @@ struct RecommendationsViewHandler {
     let setCurrentTrackViewModel: (_ viewModel: RecommendationViewModel) -> Void
     let setSortViewModel: (_ viewModel: RecommendationsSortViewModel) -> Void
     let setViewModels: (_ viewModels: [RecommendationViewModel]?, _ animated: Bool) -> Void
+    let setPremiumContentHandler: (_ handler: @escaping () -> Void) -> Void
     let showMixesViewController: (_ presenter: MixesPresenter) -> Void
     let presentRecommendationsViewController: (_ presenter: RecommendationsPresenter) -> Void
+    let presentSubscriptionViewController: (_ presenter: SubscriptionPresenter) -> Void
     let popToRootViewController: () -> Void
     let showAddedToMix: () -> Void
 }
@@ -70,6 +72,11 @@ final class RecommendationsPresenter: Presenter {
             }
         })
         loadCurrentTrackFeatures(id: currentTrack.id)
+
+        recommendationsViewHandler?.setPremiumContentHandler({ [weak self] in
+            let subscriptionPresenter = SubscriptionPresenter()
+            self?.recommendationsViewHandler?.presentSubscriptionViewController(subscriptionPresenter)
+        })
     }
 
     func viewWillAppear() {
@@ -146,7 +153,7 @@ extension RecommendationsPresenter {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let response):
-                    self.recommendationsAudioFeatures = response.audioFeatures
+                    self.recommendationsAudioFeatures = response.audioFeatures.compactMap { $0 }
 
                     var recommendationsViewModels = [RecommendationViewModel]()
 

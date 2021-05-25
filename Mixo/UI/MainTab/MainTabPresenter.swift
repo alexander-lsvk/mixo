@@ -37,36 +37,27 @@ enum MainTab: Int, CaseIterable {
 struct MainTabViewHandler {
     let setupTabs: (_ tabs: [MainTab]) -> Void
     let presentSpotifyLoginViewController: (_ presenter: SpotifyLoginPresenter) -> Void
-    let showPlayerViewController: (_ presenter: PlayerPresenter) -> Void
+    let presentPlayerViewController: (_ presenter: PlayerPresenter) -> Void
+    let showPlayerContainer: (_ show: Bool) -> Void
 }
 
 final class MainTabPresenter: Presenter {
     var baseViewHandler: BaseViewHandler?
     var mainTabViewHandler: MainTabViewHandler?
 
-    var spotifyLoginPresenter: SpotifyLoginPresenter?
-
-    private let authenticationService: AuthenticationService
-
-    init(authenticationService: AuthenticationService = MixoAuthenticationService.shared) {
-        self.authenticationService = authenticationService
-    }
-
     func didBindController() {
         // Setup tabs
         mainTabViewHandler?.setupTabs(MainTab.allCases)
-        mainTabViewHandler?.showPlayerViewController(PlayerPresenter())
 
-        if let spotifyLoginPresenter = spotifyLoginPresenter {
-            if !authenticationService.isLoggedIn {
-                mainTabViewHandler?.presentSpotifyLoginViewController(spotifyLoginPresenter)
-            } else if authenticationService.tokenNeedsRefresh {
-                baseViewHandler?.showStatus(.loading, true)
-                spotifyLoginPresenter.updateSession { [weak self] in
-                    self?.baseViewHandler?.hideStatus(true)
-                }
-            }
-            return
-        }
+        let playerPresenter = PlayerPresenter()
+        playerPresenter.delegate = self
+        mainTabViewHandler?.presentPlayerViewController(playerPresenter)
+    }
+}
+
+// MARK: - PlayerVisibilityDelegate
+extension MainTabPresenter: PlayerVisibilityDelegate {
+    func showPlayer(_ show: Bool) {
+        mainTabViewHandler?.showPlayerContainer(show)
     }
 }

@@ -31,6 +31,9 @@ final class RecommendationsViewController: BaseViewController<RecommendationsPre
             self?.recommendationsView.setTableHeaderView()
             self?.recommendationsView.setRecommendationViewModels(viewModels, animated: animated)
 
+        }, setPremiumContentHandler: { [weak self] handler in
+            self?.recommendationsView.setPremiumContentHandler(handler)
+
         }, showMixesViewController: { [weak self] presenter in
             let mixesViewController = MixesViewController(presenter: presenter)
             let swiftMessagesSegue = SwiftMessagesSegue(identifier: nil, source: self!, destination: mixesViewController)
@@ -41,6 +44,10 @@ final class RecommendationsViewController: BaseViewController<RecommendationsPre
             let recommendationsViewController = RecommendationsViewController(presenter: presenter)
             recommendationsViewController.navigationItem.rightBarButtonItem = self?.navigationItem.rightBarButtonItem
             self?.navigationController?.pushViewController(recommendationsViewController, animated: true)
+
+        }, presentSubscriptionViewController: { [weak self] presenter in
+            let subscriptionViewController = SubscriptionViewController(presenter: presenter)
+            self?.present(subscriptionViewController, animated: true)
 
         }, popToRootViewController: { [weak self] in
             self?.navigationController?.popToRootViewController(animated: true)

@@ -33,11 +33,15 @@ final class MainTabViewController: BaseViewController<MainTabPresenter> {
 
         }, presentSpotifyLoginViewController: { [weak self] presenter in
             let spotifyLoginViewController = SpotifyLoginViewController(presenter: presenter)
-            self?.addChildController(spotifyLoginViewController, in: self!.view)
 
-        }, showPlayerViewController: { [weak self] presenter in
+            self?.selectedViewController?.present(spotifyLoginViewController, animated: true)
+
+        }, presentPlayerViewController: { [weak self] presenter in
             let playerViewController = PlayerViewController(presenter: presenter)
             self?.addChildController(playerViewController, in: self!.playerViewContainer)
+
+        }, showPlayerContainer: { [weak self] show in
+            self?.playerViewContainer.isHidden = !show
         })
 
         addChildController(tabController, in: view)
@@ -55,6 +59,7 @@ final class MainTabViewController: BaseViewController<MainTabPresenter> {
                                             equal(tabBarController!.tabBar, to: \.topAnchor, constant: -60.0)])
         view.bringSubviewToFront(playerViewContainer)
         view.insertSubview(playerViewContainer, aboveSubview: tabController.tabBar)
+        playerViewContainer.isHidden = true
     }
 }
 

@@ -11,6 +11,7 @@ import Foundation
 extension CALayer {
     func addShadow(color: UIColor = .darkGray, radius: CGFloat = 3.0, opacity: Float = 0.4) {
         self.shadowOffset = .zero
+        self.shouldRasterize = true
         self.shadowOpacity = opacity
         self.shadowRadius = radius
         self.shadowColor = color.cgColor

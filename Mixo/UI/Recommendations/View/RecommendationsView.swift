@@ -57,11 +57,6 @@ final class RecommendationsView: UIView, XibLoadable {
                                              textColor: UIColor.white.withAlphaComponent(0.8),
                                              size: CGSize(width: 50.0, height: 50.0)),
                             for: .normal)
-        playButton.setImage(.fontAwesomeIcon(name: .stop,
-                                             style: .solid,
-                                             textColor: UIColor.white.withAlphaComponent(0.8),
-                                             size: CGSize(width: 50.0, height: 50.0)),
-                            for: .selected)
 
         backToSearchView.layer.addShadow()
     }
@@ -171,6 +166,10 @@ extension RecommendationsView: UITableViewDataSource, UITableViewDelegate {
             headerImageBottomConstraint = headerImageView.bottomAnchor.constraint(equalTo: recommendationsSortView!.topAnchor, constant: 0.0)
             headerImageBottomConstraint?.isActive = true
         }
+        if indexPath.row > 9 {
+            tableView.scrollToRow(at: IndexPath(row: 7, section: 0), at: .top, animated: false)
+            premiumContentHandler?()
+        }
     }
 
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -196,7 +195,7 @@ extension RecommendationsView {
         tableView.delegate = self
         tableView.dataSource = self
 
-        tableView.contentInset = UIEdgeInsets(top: 0.0, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 60.0, right: 0.0)
         
         register(reusableCell: TrackTableViewCell.self)
     }
@@ -224,6 +223,14 @@ extension RecommendationsView {
     }
 
     private func play() {
+        UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseOut], animations: {
+            self.playButton.transform = CGAffineTransform(scaleX: 0.90, y: 0.90)
+        }) { finished in
+            UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseIn], animations: {
+                self.playButton.transform = CGAffineTransform.identity
+            })
+        }
+
         if playButton.isSelected {
             playHandler?()
             return
